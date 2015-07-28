@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".splash">
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+
+    <!--<item android:id="@+id/action_daily"-->
+        <!--android:title="@string/daily"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/done_button"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"/>-->
+
+    <!--<item android:id="@+id/action_monthly"-->
+        <!--android:title="@string/monthly"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/done_button"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true" />-->
+
+</menu>
+

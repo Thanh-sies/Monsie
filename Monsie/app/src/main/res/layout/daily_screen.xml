@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:textSize="50sp"
-        android:text="@string/title1"
-        android:textStyle="normal"
-        android:gravity="center"
-        android:typeface="sans" />
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:id="@+id/date"/>
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/done_button"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/button" />
 
-</RelativeLayout>
+
+</LinearLayout>

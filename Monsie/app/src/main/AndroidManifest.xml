@@ -30,6 +30,11 @@
             android:name=".monthly_screen"
             android:label="@string/app_name">
         </activity>
+
+        <activity
+            android:name=".year_screen"
+            android:label="@string/year">
+        </activity>
     </application>
 
 </manifest>

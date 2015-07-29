@@ -1,16 +1,11 @@
 package com.example.leeser.monsie;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.ImageButton;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,20 +20,35 @@ public class daily_screen extends Activity {
 
         setContentView(R.layout.daily_screen);
 
-        final ImageButton image1 = (ImageButton) findViewById(R.id.imageButton);
+        final Button done_button = (Button) findViewById(R.id.done_button);
+        done_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
+                daily_screen.this.startActivity(goToMonth);
+            }
+        });
+
+        final Button image1 = (Button) findViewById(R.id.selector1);
+        final Button image2 = (Button) findViewById(R.id.selector2);
+
         image1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent imageToCal = new Intent(daily_screen.this, monthly_screen.class);
-                daily_screen.this.startActivity(imageToCal);
+                image1.setBackgroundResource(R.drawable.select_smile);
+                image2.setBackgroundResource(R.drawable.sad_face);
+                image1.setSelected(true);
+                image2.setSelected(false);
             }
         });
-        final ImageButton image2 = (ImageButton) findViewById(R.id.imageButton2);
+
         image2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent image2ToCal = new Intent(daily_screen.this, monthly_screen.class);
-                daily_screen.this.startActivity(image2ToCal);
+                image2.setBackgroundResource(R.drawable.select_sad);
+                image1.setBackgroundResource(R.drawable.smile);
+                image1.setSelected(false);
+                image2.setSelected(true);
             }
         });
 
@@ -53,6 +63,4 @@ public class daily_screen extends Activity {
         return dateFormat.format(date);
     }
 
-
 }
-

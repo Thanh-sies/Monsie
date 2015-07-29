@@ -3,13 +3,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#bce7f4">
 
      <TextView
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="0.16"
         android:id="@+id/date"/>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/images"
+        android:layout_weight="0.01">
+
+        <Button
+            android:id="@+id/selector1"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/smile"
+            android:layout_marginRight="67dp"
+            android:layout_marginEnd="67dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/selector2"
+            android:layout_toStartOf="@+id/selector2" />
+
+        <Button
+            android:id="@+id/selector2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/sad_face"
+            android:layout_marginRight="72dp"
+            android:layout_marginEnd="72dp"
+            android:layout_alignTop="@+id/selector1"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
 
     <EditText
         android:layout_width="wrap_content"
@@ -18,42 +49,14 @@
         android:ems="30"
         android:id="@+id/editText"
         android:hint="@string/textbox"
-        android:layout_weight="0.02" />
+        android:layout_weight="0.03" />
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/images"
-        android:layout_weight="0.01">
-
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageButton"
-            android:layout_alignTop="@+id/imageButton2"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="110dp"
-            android:layout_marginEnd="110dp"
-            android:src="@drawable/sad2"
-            android:clickable="true"
-            android:background="@android:color/transparent"
-            />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageButton2"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="116dp"
-            android:layout_marginStart="116dp"
-            android:src="@drawable/happy2"
-            android:clickable="true"
-            android:background="@android:color/transparent"
-             />
-    </RelativeLayout>
+        android:text="@string/done_button"
+        android:id="@+id/done_button"
+        android:background="#e8e8e8"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

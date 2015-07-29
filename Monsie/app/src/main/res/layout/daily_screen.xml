@@ -6,11 +6,16 @@
     android:orientation="vertical"
     android:background="#bce7f4">
 
-     <TextView
+
+    <TextView
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
         android:layout_weight="0.16"
-        android:id="@+id/date"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/date"
+        android:gravity="center_horizontal"
+        android:maxLines="3"
+        android:lines="3"
+        android:textColor="#395075" />
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"

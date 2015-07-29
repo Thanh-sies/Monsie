@@ -1,39 +1,24 @@
 package com.example.leeser.monsie;
 
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import android.app.Activity;
+import android.view.View;
+import android.widget.Button;
 
+/**
+ * Created by thanhla on 7/29/15.
+ */
+public class year_screen extends ActionBarActivity {
 
-public class activity_splash extends Activity {
-
-    // Splash screen timer
-    private static int SPLASH_TIMER = 2000;
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
 
-        new Handler().postDelayed(new Runnable() {
-
-
-
-            @Override
-            public void run() {
-                // This method will be executed once the timer is over
-                // Start your app main activity
-                Intent i = new Intent(activity_splash.this, daily_screen.class);
-                startActivity(i);
-
-                // close this activity
-                finish();
-            }
-        }, SPLASH_TIMER);
-
+        setContentView(R.layout.monthly_screen);
     }
 
     @Override
@@ -50,8 +35,18 @@ public class activity_splash extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-
-        return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.action_daily:
+                setContentView(R.layout.daily_screen);
+                return true;
+            case R.id.action_monthly:
+                setContentView(R.layout.monthly_screen);
+                return true;
+            case R.id.action_year:
+                setContentView(R.layout.year_screen);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

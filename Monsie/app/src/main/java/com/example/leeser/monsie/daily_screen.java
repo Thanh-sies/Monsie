@@ -10,7 +10,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import android.widget.ImageButton;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,12 +25,20 @@ public class daily_screen extends Activity {
 
         setContentView(R.layout.daily_screen);
 
-        final Button done_button = (Button) findViewById(R.id.button);
-        done_button.setOnClickListener(new View.OnClickListener() {
+        final ImageButton image1 = (ImageButton) findViewById(R.id.imageButton);
+        image1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
-                daily_screen.this.startActivity(goToMonth);
+                Intent imageToCal = new Intent(daily_screen.this, monthly_screen.class);
+                daily_screen.this.startActivity(imageToCal);
+            }
+        });
+        final ImageButton image2 = (ImageButton) findViewById(R.id.imageButton2);
+        image2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent image2ToCal = new Intent(daily_screen.this, monthly_screen.class);
+                daily_screen.this.startActivity(image2ToCal);
             }
         });
 
@@ -44,22 +52,7 @@ public class daily_screen extends Activity {
         Date date = new Date();
         return dateFormat.format(date);
     }
-    final ImageButton image1 = (ImageButton) findViewById(R.id.imageButton);
-    image1.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent imageToCal = new Intent(daily_screen.this, monthly_screen.class);
-            daily_screen.this.startActivity(imageToCal);
-        }
-    });
-    final ImageButton image2 = (ImageButton) findViewById(R.id.imageButton2);
-    image2.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent image2ToCal = new Intent(daily_screen.this, monthly_screen.class);
-            daily_screen.this.startActivity(image2ToCal);
-        }
-    });
+
 
 }
 

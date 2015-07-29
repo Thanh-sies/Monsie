@@ -41,7 +41,7 @@ public class daily_screen extends Activity {
         });
 
         // Show the date
-        TextView dateView = (TextView) findViewById(R.id.date);
+        final TextView dateView = (TextView) findViewById(R.id.date);
         dateView.setText(printDay() + printMonth() + printDate());
         dateView.setTextSize(45);
         // Change font

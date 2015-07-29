@@ -67,4 +67,3 @@ public class daily_screen extends Activity {
         return dateFormat.format(date) + "\n";
     }
 }
-

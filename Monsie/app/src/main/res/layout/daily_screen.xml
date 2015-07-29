@@ -3,13 +3,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#bce7f4">
 
-     <TextView
+
+    <TextView
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:id="@+id/date"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/date"
+        android:gravity="center_horizontal"
+        android:maxLines="3"
+        android:lines="3"
+        android:textColor="#395075" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -52,8 +57,7 @@
             android:layout_marginStart="116dp"
             android:src="@drawable/happy2"
             android:clickable="true"
-            android:background="@android:color/transparent"
-             />
+            android:background="@android:color/transparent" />
     </RelativeLayout>
 
 </LinearLayout>

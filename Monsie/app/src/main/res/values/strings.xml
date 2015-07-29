@@ -4,6 +4,10 @@
     <string name="title2">I am screen 2</string>
     <string name="done_button">Done</string>
 
-    <string name="hello_world">Hello world!</string>
+   <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="daily">Daily</string>
+    <string name="monthly">Monthly</string>
+    <string name="yearly">Yearly</string>
+    <string name="textbox">Write down how you feel today!
 </resources>

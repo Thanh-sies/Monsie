@@ -44,6 +44,22 @@ public class daily_screen extends Activity {
         Date date = new Date();
         return dateFormat.format(date);
     }
+    final ImageButton image1 = (ImageButton) findViewById(R.id.imageButton);
+    image1.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent imageToCal = new Intent(daily_screen.this, monthly_screen.class);
+            daily_screen.this.startActivity(imageToCal);
+        }
+    });
+    final ImageButton image2 = (ImageButton) findViewById(R.id.imageButton2);
+    image2.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent image2ToCal = new Intent(daily_screen.this, monthly_screen.class);
+            daily_screen.this.startActivity(image2ToCal);
+        }
+    });
 
 }
 

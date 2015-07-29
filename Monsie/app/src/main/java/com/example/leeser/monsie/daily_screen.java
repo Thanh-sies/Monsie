@@ -21,6 +21,8 @@ public class daily_screen extends Activity {
 
         setContentView(R.layout.daily_screen);
 
+        // REMEMBER TO CREDIT THE VECTOR IMAGE SOURCE:
+        // http://www.vecteezy.com/vector-art/82360-rounded-emoticon-vectors-with-stroke
         final ImageButton image1 = (ImageButton) findViewById(R.id.imageButton);
         image1.setOnClickListener(new View.OnClickListener() {
             @Override

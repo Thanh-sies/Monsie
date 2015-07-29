@@ -1,17 +1,17 @@
 package com.example.leeser.monsie;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.os.Handler;
+import android.app.Activity;
 
 
-public class activity_splash extends ActionBarActivity {
+public class activity_splash extends Activity {
 
     // Splash screen timer
-    private static int SPLASH_TIMER = 1000;
+    private static int SPLASH_TIMER = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

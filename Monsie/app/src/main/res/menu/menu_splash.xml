@@ -3,4 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".SplashActivity">
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
+
+    <!-- Search, should appear as action button -->
+    <item android:id="@+id/action_daily"
+        android:icon="@drawable/daily"
+        android:title="@string/title1"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/action_monthly"
+        android:icon="@drawable/monthly"
+        android:title="@string/title2"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/action_year"
+        android:icon="@drawable/year"
+        android:title="@string/title1"
+        app:showAsAction="always" />
+
 </menu>

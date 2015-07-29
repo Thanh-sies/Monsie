@@ -4,11 +4,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageButton;
 import java.text.DateFormat;
@@ -62,12 +59,20 @@ public class daily_screen extends ActionBarActivity{
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.action_daily:
+                setContentView(R.layout.daily_screen);
+                return true;
+            case R.id.action_monthly:
+                setContentView(R.layout.monthly_screen);
+                return true;
+            case R.id.action_year:
+                setContentView(R.layout.year_screen);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
     }
     private String printDate() {
         DateFormat dateFormat = new SimpleDateFormat("EEE, MMM d");

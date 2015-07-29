@@ -27,6 +27,7 @@ public class daily_screen extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.daily_screen);
 
+
         final Button done_button = (Button) findViewById(R.id.done_button);
         done_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +47,9 @@ public class daily_screen extends ActionBarActivity {
         // Change font
         Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
         dateView.setTypeface(tf);
+
+        // REMEMBER TO CREDIT THE VECTOR IMAGE SOURCE:
+        // http://www.vecteezy.com/vector-art/82360-rounded-emoticon-vectors-with-stroke
 
         image1.setOnClickListener(new View.OnClickListener() {
             @Override

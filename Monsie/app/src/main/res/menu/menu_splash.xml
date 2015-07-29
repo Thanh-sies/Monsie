@@ -4,18 +4,15 @@
 
     <!-- Search, should appear as action button -->
     <item android:id="@+id/action_daily"
-        android:icon="@drawable/day"
         android:title="@string/day"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item android:id="@+id/action_monthly"
-        android:icon="@drawable/month"
         android:title="@string/month"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item android:id="@+id/action_year"
-        android:icon="@drawable/year"
         android:title="@string/year"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
 </menu>

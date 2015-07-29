@@ -11,7 +11,7 @@ import android.os.Handler;
 public class activity_splash extends ActionBarActivity {
 
     // Splash screen timer
-    private static int SPLASH_TIMER = 3000;
+    private static int SPLASH_TIMER = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

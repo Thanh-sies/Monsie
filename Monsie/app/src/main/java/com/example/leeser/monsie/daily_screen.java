@@ -1,19 +1,15 @@
 package com.example.leeser.monsie;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageButton;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import android.graphics.Typeface;
 
 /**
  * Created by leeser on 7/17/15.
@@ -42,17 +38,31 @@ public class daily_screen extends Activity {
             }
         });
 
-        TextView dayView = (TextView) findViewById(R.id.date);
-        dayView.setText(printDate());
-        dayView.setTextSize(35);
+        // Show the date
+        TextView dateView = (TextView) findViewById(R.id.date);
+        dateView.setText(printDay() + printMonth() + printDate());
+        dateView.setTextSize(45);
+        // Change font
+        Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
+        dateView.setTypeface(tf);
+    }
+
+    private String printDay() {
+        DateFormat dateFormat = new SimpleDateFormat("EEE");
+        Date date = new Date();
+        return dateFormat.format(date) + "\n";
+    }
+
+    private String printMonth() {
+        DateFormat dateFormat = new SimpleDateFormat("MMM");
+        Date date = new Date();
+        return dateFormat.format(date) + "\n";
     }
 
     private String printDate() {
-        DateFormat dateFormat = new SimpleDateFormat("EEE, MMM d");
+        DateFormat dateFormat = new SimpleDateFormat("d");
         Date date = new Date();
-        return dateFormat.format(date);
+        return dateFormat.format(date) + "\n";
     }
-
-
 }
 

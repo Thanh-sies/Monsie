@@ -23,12 +23,11 @@ import android.widget.Toast;
 public class daily_screen extends ActionBarActivity {
 
     public static HashMap<String, String> memomap = new HashMap<String, String>();
-    private String date = "";
+    private String dateString = "";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.daily_screen);
-
 
         final Button done_button = (Button) findViewById(R.id.done_button);
         done_button.setOnClickListener(new View.OnClickListener() {
@@ -42,17 +41,8 @@ public class daily_screen extends ActionBarActivity {
         final Button image1 = (Button) findViewById(R.id.selector1);
         final Button image2 = (Button) findViewById(R.id.selector2);
 
-        // Show the date
-        TextView dateView = (TextView) findViewById(R.id.date);
-        dateView.setText(printDay() + printMonth() + printDate());
-        dateView.setTextSize(45);
-        // Change font
-        Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
-        dateView.setTypeface(tf);
-
         // REMEMBER TO CREDIT THE VECTOR IMAGE SOURCE:
         // http://www.vecteezy.com/vector-art/82360-rounded-emoticon-vectors-with-stroke
-
         image1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,21 +65,8 @@ public class daily_screen extends ActionBarActivity {
 
         // Show the date
         TextView dateView = (TextView) findViewById(R.id.date);
-        date = printDay() + printMonth() + printDate();
-        dateView.setText(date);
-        dateView.setTextSize(45);
-        // Change font
-        Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
-        dateView.setTypeface(tf);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // Show the date
-        TextView dateView = (TextView) findViewById(R.id.date);
-        date = printDay() + printMonth() + printDate();
-        dateView.setText(date);
+        dateString = printDay() + printMonth() + printDate();
+        dateView.setText(dateString);
         dateView.setTextSize(45);
         // Change font
         Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
@@ -131,7 +108,6 @@ public class daily_screen extends ActionBarActivity {
         switch (item.getItemId()) {
             case R.id.action_daily:
                 setContentView(R.layout.daily_screen);
-                onResume();
                 return true;
             case R.id.action_monthly:
                 setContentView(R.layout.monthly_screen);

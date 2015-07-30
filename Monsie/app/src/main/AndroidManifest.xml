@@ -34,12 +34,12 @@
 
         <activity
             android:name=".year_screen"
-            android:label="@string/year">
+            android:label="@string/app_name">
         </activity>
 
         <activity
             android:name=".year_summary"
-            android:label="@string/summary">
+            android:label="@string/app_name">
         </activity>
 
     </application>

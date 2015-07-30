@@ -18,14 +18,13 @@ public class year_screen extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.monthly_screen);
+        setContentView(R.layout.year_screen);
 
         // Show the date
         TextView yearTitle = (TextView) findViewById(R.id.yearlyReport);
         // Change font
         Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
         yearTitle.setTypeface(tf);
-
 
         final Button summary_button = (Button) findViewById(R.id.summary);
         summary_button.setOnClickListener(new View.OnClickListener() {
@@ -35,8 +34,6 @@ public class year_screen extends ActionBarActivity {
                 year_screen.this.startActivity(goToSummary);
             }
         });
-
-
     }
 
     @Override

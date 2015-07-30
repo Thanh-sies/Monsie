@@ -1,23 +1,29 @@
 package com.example.leeser.monsie;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.app.ListActivity;
+import android.database.Cursor;
+import android.provider.ContactsContract;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 
 /**
  * Created by leeser on 7/24/15.
  */
-public class monthly_screen extends ActionBarActivity {
+public class monthly_screen extends Activity {
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.monthly_screen);
     }
 

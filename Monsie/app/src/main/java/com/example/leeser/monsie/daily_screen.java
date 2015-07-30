@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -24,20 +25,22 @@ public class daily_screen extends ActionBarActivity {
 
     public static HashMap<String, String> memomap = new HashMap<String, String>();
     private String dateString = "";
+    private static String inputString = "";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.daily_screen);
 
-        final Button done_button = (Button) findViewById(R.id.done_button);
-        done_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
-                daily_screen.this.startActivity(goToMonth);
-            }
-        });
+        // Show the date
+        TextView dateView = (TextView) findViewById(R.id.date);
+        dateString = printDate();
+        dateView.setText(dateString);
+        dateView.setTextSize(70);
+        // Change font
+        Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
+        dateView.setTypeface(tf);
 
+        // emoji buttons
         final Button image1 = (Button) findViewById(R.id.selector1);
         final Button image2 = (Button) findViewById(R.id.selector2);
 
@@ -63,14 +66,17 @@ public class daily_screen extends ActionBarActivity {
             }
         });
 
-        // Show the date
-        TextView dateView = (TextView) findViewById(R.id.date);
-        dateString = printDate();
-        dateView.setText(dateString);
-        dateView.setTextSize(70);
-        // Change font
-        Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
-        dateView.setTypeface(tf);
+        final Button done_button = (Button) findViewById(R.id.done_button);
+        done_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText userInput = (EditText) findViewById(R.id.editText);
+                inputString = userInput.getText().toString();
+
+                Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
+                daily_screen.this.startActivity(goToMonth);
+            }
+        });
     }
 
     private void showDate() {

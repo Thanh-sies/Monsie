@@ -9,12 +9,12 @@
 
     <TextView
         android:layout_width="fill_parent"
-        android:layout_weight="0.41"
+        android:layout_weight="0.3"
         android:layout_height="wrap_content"
         android:id="@+id/date"
         android:gravity="center_horizontal"
         android:textColor="#395075"
-        android:paddingTop="50dp" />
+        />
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -62,7 +62,6 @@
         />
 
     <Button
-
         android:layout_width="166dp"
         android:layout_height="wrap_content"
         android:text="@string/done_button"

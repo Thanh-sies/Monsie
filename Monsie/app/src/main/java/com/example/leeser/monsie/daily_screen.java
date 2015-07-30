@@ -87,7 +87,7 @@ public class daily_screen extends ActionBarActivity {
     private String printDate() {
         DateFormat dateFormat = new SimpleDateFormat("EEE, MMM d");
         Date date = new Date();
-        return dateFormat.format(date) + "\n";
+        return dateFormat.format(date);
     }
 
     @Override

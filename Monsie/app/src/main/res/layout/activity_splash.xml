@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:textSize="50sp"
+        android:textSize="90sp"
         android:textColor="#00704a"
         android:background="#ccffcc"
         android:text="@string/app_name"

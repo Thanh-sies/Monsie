@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Monsie</string>
-    <string name="day">daily</string>
-    <string name="month">month</string>
-    <string name="year">year</string>
+    <string name="app_name">MONSIE</string>
+    <string name="day">Day</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
     <string name="done_button">Done</string>
 
    <string name="hello_world">Hello world!</string>

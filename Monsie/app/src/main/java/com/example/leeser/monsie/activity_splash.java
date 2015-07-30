@@ -1,11 +1,13 @@
 package com.example.leeser.monsie;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.os.Handler;
 import android.app.Activity;
+import android.widget.TextView;
 
 
 public class activity_splash extends Activity {
@@ -21,7 +23,6 @@ public class activity_splash extends Activity {
         new Handler().postDelayed(new Runnable() {
 
 
-
             @Override
             public void run() {
                 // This method will be executed once the timer is over
@@ -33,6 +34,11 @@ public class activity_splash extends Activity {
                 finish();
             }
         }, SPLASH_TIMER);
+
+        TextView title = (TextView) findViewById(R.id.title);
+        // Change font
+        Typeface tf = Typeface.createFromAsset(getAssets(),"pricedown bl.ttf");
+        title.setTypeface(tf);
 
     }
 

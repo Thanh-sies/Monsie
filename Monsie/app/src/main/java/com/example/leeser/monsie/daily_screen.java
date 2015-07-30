@@ -65,28 +65,16 @@ public class daily_screen extends ActionBarActivity {
 
         // Show the date
         TextView dateView = (TextView) findViewById(R.id.date);
-        dateString = printDay() + printMonth() + printDate();
+        dateString = printDate();
         dateView.setText(dateString);
-        dateView.setTextSize(45);
+        dateView.setTextSize(70);
         // Change font
         Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
         dateView.setTypeface(tf);
     }
 
-    private String printDay() {
-        DateFormat dateFormat = new SimpleDateFormat("EEE");
-        Date date = new Date();
-        return dateFormat.format(date) + "\n";
-    }
-
-    private String printMonth() {
-        DateFormat dateFormat = new SimpleDateFormat("MMM");
-        Date date = new Date();
-        return dateFormat.format(date) + "\n";
-    }
-
     private String printDate() {
-        DateFormat dateFormat = new SimpleDateFormat("d");
+        DateFormat dateFormat = new SimpleDateFormat("EEE, MMM d");
         Date date = new Date();
         return dateFormat.format(date) + "\n";
     }

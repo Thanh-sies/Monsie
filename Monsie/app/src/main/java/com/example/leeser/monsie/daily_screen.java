@@ -50,6 +50,8 @@ public class daily_screen extends ActionBarActivity {
                 image2.setBackgroundResource(R.mipmap.ic_launcher);
                 image1.setSelected(true);
                 image2.setSelected(false);
+                image1.setHeight(1600);
+                image1.setWidth(1600);
             }
         });
 

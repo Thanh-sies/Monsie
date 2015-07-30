@@ -73,6 +73,17 @@ public class daily_screen extends ActionBarActivity {
         dateView.setTypeface(tf);
     }
 
+    private void showDate() {
+        // Show the date
+        TextView dateView = (TextView) findViewById(R.id.date);
+        dateString = printDate();
+        dateView.setText(dateString);
+        dateView.setTextSize(70);
+        // Change font
+        Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
+        dateView.setTypeface(tf);
+    }
+
     private String printDate() {
         DateFormat dateFormat = new SimpleDateFormat("EEE, MMM d");
         Date date = new Date();
@@ -96,6 +107,7 @@ public class daily_screen extends ActionBarActivity {
         switch (item.getItemId()) {
             case R.id.action_daily:
                 setContentView(R.layout.daily_screen);
+                showDate();
                 return true;
             case R.id.action_monthly:
                 setContentView(R.layout.monthly_screen);

@@ -8,11 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.ImageButton;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import android.widget.Button;
 
 import android.graphics.Typeface;
 import android.widget.Toast;
@@ -29,22 +29,47 @@ public class daily_screen extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.daily_screen);
 
+
+        final Button done_button = (Button) findViewById(R.id.done_button);
+        done_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
+                daily_screen.this.startActivity(goToMonth);
+            }
+        });
+
+        final Button image1 = (Button) findViewById(R.id.selector1);
+        final Button image2 = (Button) findViewById(R.id.selector2);
+
+        // Show the date
+        TextView dateView = (TextView) findViewById(R.id.date);
+        dateView.setText(printDay() + printMonth() + printDate());
+        dateView.setTextSize(45);
+        // Change font
+        Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
+        dateView.setTypeface(tf);
+
         // REMEMBER TO CREDIT THE VECTOR IMAGE SOURCE:
         // http://www.vecteezy.com/vector-art/82360-rounded-emoticon-vectors-with-stroke
-        final ImageButton image1 = (ImageButton) findViewById(R.id.imageButton);
+
         image1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent imageToCal = new Intent(daily_screen.this, monthly_screen.class);
-                daily_screen.this.startActivity(imageToCal);
+                image1.setBackgroundResource(R.drawable.select_smile);
+                image2.setBackgroundResource(R.drawable.sad_face);
+                image1.setSelected(true);
+                image2.setSelected(false);
             }
         });
-        final ImageButton image2 = (ImageButton) findViewById(R.id.imageButton2);
+
         image2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent image2ToCal = new Intent(daily_screen.this, monthly_screen.class);
-                daily_screen.this.startActivity(image2ToCal);
+                image2.setBackgroundResource(R.drawable.select_sad);
+                image1.setBackgroundResource(R.drawable.smile);
+                image1.setSelected(false);
+                image2.setSelected(true);
             }
         });
 

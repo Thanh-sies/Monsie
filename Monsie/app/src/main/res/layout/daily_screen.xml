@@ -4,10 +4,12 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="#bce7f4">
+    android:background="#bce7f4"
+    android:weightSum="1">
 
     <TextView
         android:layout_width="fill_parent"
+        android:layout_weight="0.62"
         android:layout_height="wrap_content"
         android:id="@+id/date"
         android:gravity="center_horizontal"
@@ -15,48 +17,54 @@
         android:lines="3"
         android:textColor="#395075" />
 
-    <EditText
-        android:layout_width="wrap_content"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/images"
+        android:layout_weight="0.06">
+
+        <Button
+            android:id="@+id/selector1"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/smile"
+            android:layout_marginLeft="83dp"
+            android:layout_marginStart="83dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:id="@+id/selector2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/sad_face"
+            android:layout_marginRight="72dp"
+            android:layout_marginEnd="72dp"
+            android:layout_alignTop="@+id/selector1"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+
+    </RelativeLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
         android:inputType="textMultiLine"
         android:ems="30"
         android:id="@+id/editText"
         android:hint="@string/textbox"
-        android:layout_weight="0.02" />
+        android:layout_weight="0.09" />
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
+    <Button
+        android:layout_width="166dp"
         android:layout_height="wrap_content"
-        android:id="@+id/images"
-        android:layout_weight="0.01">
+        android:text="@string/done_button"
+        android:id="@+id/done_button"
+        android:background="#e8e8e8"
+        android:layout_gravity="center_horizontal"
+         />
 
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageButton"
-            android:layout_alignTop="@+id/imageButton2"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="110dp"
-            android:layout_marginEnd="110dp"
-            android:src="@drawable/sad2"
-            android:clickable="true"
-            android:background="@android:color/transparent"
-            />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageButton2"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="116dp"
-            android:layout_marginStart="116dp"
-            android:src="@drawable/happy2"
-            android:clickable="true"
-            android:background="@android:color/transparent" />
-    </RelativeLayout>
 
 </LinearLayout>

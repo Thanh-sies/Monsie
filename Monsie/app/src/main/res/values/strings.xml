@@ -14,5 +14,10 @@
     <string name="textbox">Write down how you feel today!</string>
     <string name="ask_emoji">How do you feel today?</string>
     <string name="summary">Summary</string>
+    <string name="happy_days">Happy Days:</string>
+    <string name="sad_days">Sad Days:</string>
+    <string name="total_summary">Total Summary</string>
+    <string name="close">Close</string>
+
 
 </resources>

@@ -12,9 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-/**
- * Created by thanhla on 7/29/15.
- */
+
 public class year_screen extends ActionBarActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +25,18 @@ public class year_screen extends ActionBarActivity {
         // Change font
         Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
         yearTitle.setTypeface(tf);
+
+
+        final Button summary_button = (Button) findViewById(R.id.summary);
+        summary_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToSummary = new Intent(year_screen.this, year_summary.class);
+                year_screen.this.startActivity(goToSummary);
+            }
+        });
+
+
     }
 
     @Override

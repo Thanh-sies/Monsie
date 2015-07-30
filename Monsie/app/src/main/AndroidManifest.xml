@@ -36,6 +36,12 @@
             android:name=".year_screen"
             android:label="@string/year">
         </activity>
+
+        <activity
+            android:name=".year_summary"
+            android:label="@string/summary">
+        </activity>
+
     </application>
 
 </manifest>

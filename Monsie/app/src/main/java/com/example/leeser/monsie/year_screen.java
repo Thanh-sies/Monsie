@@ -1,5 +1,6 @@
 package com.example.leeser.monsie;
 
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,6 +10,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * Created by thanhla on 7/29/15.
@@ -19,6 +21,12 @@ public class year_screen extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.monthly_screen);
+
+        // Show the date
+        TextView yearTitle = (TextView) findViewById(R.id.yearlyReport);
+        // Change font
+        Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
+        yearTitle.setTypeface(tf);
     }
 
     @Override

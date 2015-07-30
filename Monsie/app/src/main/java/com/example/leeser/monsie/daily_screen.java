@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -50,8 +51,10 @@ public class daily_screen extends ActionBarActivity {
                 image2.setBackgroundResource(R.mipmap.ic_launcher);
                 image1.setSelected(true);
                 image2.setSelected(false);
-                image1.setHeight(1600);
-                image1.setWidth(1600);
+//                ViewGroup.LayoutParams size = image1.getLayoutParams();
+//                size.width = 300;
+//                size.height = 300;
+//                image1.setLayoutParams(size);
             }
         });
 

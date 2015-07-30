@@ -72,7 +72,7 @@
         android:hint="@string/textbox"
         android:background="@drawable/border"
         android:layout_weight="0.23"
-        android:maxLines="5"
+        android:maxLength="140"
         android:paddingTop="50dp"
         />
 
@@ -85,7 +85,7 @@
             android:layout_width="166dp"
             android:layout_height="60dp"
             android:text="@string/done_button"
-            android:textSize="10pt"
+            android:textSize="13pt"
             android:id="@+id/done_button"
             android:background="#e8e8e8"
             android:layout_gravity="center_horizontal"

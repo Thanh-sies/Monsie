@@ -26,7 +26,7 @@
             android:id="@+id/selector1"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:background="@drawable/smile"
+            android:background="@mipmap/happy"
             android:layout_marginLeft="82dp"
             android:layout_marginStart="82dp"
             android:layout_alignParentTop="true"

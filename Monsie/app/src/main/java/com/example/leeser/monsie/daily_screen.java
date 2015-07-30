@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 import android.graphics.Typeface;
+import android.widget.Toast;
 
 /**
  * Created by leeser on 7/17/15.
@@ -22,6 +23,7 @@ import android.graphics.Typeface;
 public class daily_screen extends ActionBarActivity {
 
     public static HashMap<String, String> memomap = new HashMap<String, String>();
+    private String date = "";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +49,22 @@ public class daily_screen extends ActionBarActivity {
         });
 
         // Show the date
-        final TextView dateView = (TextView) findViewById(R.id.date);
-        dateView.setText(printDay() + printMonth() + printDate());
+        TextView dateView = (TextView) findViewById(R.id.date);
+        date = printDay() + printMonth() + printDate();
+        dateView.setText(date);
+        dateView.setTextSize(45);
+        // Change font
+        Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
+        dateView.setTypeface(tf);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Show the date
+        TextView dateView = (TextView) findViewById(R.id.date);
+        date = printDay() + printMonth() + printDate();
+        dateView.setText(date);
         dateView.setTextSize(45);
         // Change font
         Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
@@ -90,6 +106,7 @@ public class daily_screen extends ActionBarActivity {
         switch (item.getItemId()) {
             case R.id.action_daily:
                 setContentView(R.layout.daily_screen);
+                onResume();
                 return true;
             case R.id.action_monthly:
                 setContentView(R.layout.monthly_screen);

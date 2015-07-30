@@ -55,7 +55,7 @@ public class daily_screen extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 image1.setBackgroundResource(R.drawable.select_smile);
-                image2.setBackgroundResource(R.drawable.sad_face);
+                image2.setBackgroundResource(R.mipmap.ic_launcher);
                 image1.setSelected(true);
                 image2.setSelected(false);
             }
@@ -64,7 +64,7 @@ public class daily_screen extends ActionBarActivity {
         image2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                image2.setBackgroundResource(R.drawable.select_sad);
+                image2.setBackgroundResource(R.mipmap.sad2);
                 image1.setBackgroundResource(R.drawable.smile);
                 image1.setSelected(false);
                 image2.setSelected(true);

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import android.widget.Button;
 
 import android.graphics.Typeface;
+import android.widget.Toast;
 
 /**
  * Created by leeser on 7/17/15.
@@ -22,11 +23,11 @@ import android.graphics.Typeface;
 public class daily_screen extends ActionBarActivity {
 
     public static HashMap<String, String> memomap = new HashMap<String, String>();
+    private String dateString = "";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.daily_screen);
-
 
         final Button done_button = (Button) findViewById(R.id.done_button);
         done_button.setOnClickListener(new View.OnClickListener() {
@@ -40,17 +41,8 @@ public class daily_screen extends ActionBarActivity {
         final Button image1 = (Button) findViewById(R.id.selector1);
         final Button image2 = (Button) findViewById(R.id.selector2);
 
-        // Show the date
-        TextView dateView = (TextView) findViewById(R.id.date);
-        dateView.setText(printDay() + printMonth() + printDate());
-        dateView.setTextSize(45);
-        // Change font
-        Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
-        dateView.setTypeface(tf);
-
         // REMEMBER TO CREDIT THE VECTOR IMAGE SOURCE:
         // http://www.vecteezy.com/vector-art/82360-rounded-emoticon-vectors-with-stroke
-
         image1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,22 +63,29 @@ public class daily_screen extends ActionBarActivity {
             }
         });
 
+        // Show the date
+        TextView dateView = (TextView) findViewById(R.id.date);
+        dateString = printDate();
+        dateView.setText(dateString);
+        dateView.setTextSize(70);
+        // Change font
+        Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
+        dateView.setTypeface(tf);
     }
 
-    private String printDay() {
-        DateFormat dateFormat = new SimpleDateFormat("EEE");
-        Date date = new Date();
-        return dateFormat.format(date) + "\n";
-    }
-
-    private String printMonth() {
-        DateFormat dateFormat = new SimpleDateFormat("MMM");
-        Date date = new Date();
-        return dateFormat.format(date) + "\n";
+    private void showDate() {
+        // Show the date
+        TextView dateView = (TextView) findViewById(R.id.date);
+        dateString = printDate();
+        dateView.setText(dateString);
+        dateView.setTextSize(70);
+        // Change font
+        Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
+        dateView.setTypeface(tf);
     }
 
     private String printDate() {
-        DateFormat dateFormat = new SimpleDateFormat("d");
+        DateFormat dateFormat = new SimpleDateFormat("EEE, MMM d");
         Date date = new Date();
         return dateFormat.format(date) + "\n";
     }
@@ -108,6 +107,7 @@ public class daily_screen extends ActionBarActivity {
         switch (item.getItemId()) {
             case R.id.action_daily:
                 setContentView(R.layout.daily_screen);
+                showDate();
                 return true;
             case R.id.action_monthly:
                 setContentView(R.layout.monthly_screen);

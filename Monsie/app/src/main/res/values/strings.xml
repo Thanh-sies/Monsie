@@ -11,4 +11,5 @@
     <string name="monthly">Monthly</string>
     <string name="yearly">Yearly</string>
     <string name="textbox">Write down how you feel today!</string>
+    <string name="ask_emoji">How do you feel today?</string>
 </resources>

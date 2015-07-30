@@ -42,14 +42,6 @@ public class daily_screen extends ActionBarActivity {
         final Button image1 = (Button) findViewById(R.id.selector1);
         final Button image2 = (Button) findViewById(R.id.selector2);
 
-        // Show the date
-        TextView dateView = (TextView) findViewById(R.id.date);
-        dateView.setText(printDay() + printMonth() + printDate());
-        dateView.setTextSize(45);
-        // Change font
-        Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
-        dateView.setTypeface(tf);
-
         // REMEMBER TO CREDIT THE VECTOR IMAGE SOURCE:
         // http://www.vecteezy.com/vector-art/82360-rounded-emoticon-vectors-with-stroke
 

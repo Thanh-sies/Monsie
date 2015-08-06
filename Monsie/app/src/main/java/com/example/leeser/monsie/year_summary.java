@@ -27,12 +27,12 @@ public class year_summary extends ActionBarActivity {
         yearSummary.setTypeface(tf);
 
 
-        final Button close_button = (Button) findViewById(R.id.close_button);
-        close_button.setOnClickListener(new View.OnClickListener() {
+        final Button closeButton = (Button) findViewById(R.id.close_button);
+        closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goToYear = new Intent(year_summary.this, year_screen.class);
-                year_summary.this.startActivity(goToYear);
+                startActivity(goToYear);
             }
         });
 

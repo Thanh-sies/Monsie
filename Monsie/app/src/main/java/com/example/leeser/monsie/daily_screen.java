@@ -75,11 +75,11 @@ public class daily_screen extends ActionBarActivity {
         done_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText userInput = (EditText) findViewById(R.id.editText);
-                inputString = userInput.getText().toString();
+//                EditText userInput = (EditText) findViewById(R.id.editText);
+//                inputString = userInput.getText().toString();
 
                 Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
-                daily_screen.this.startActivity(goToMonth);
+                startActivity(goToMonth);
             }
         });
     }

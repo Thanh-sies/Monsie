@@ -1,16 +1,21 @@
 package com.example.leeser.monsie;
 
-import android.graphics.Typeface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Handler;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import android.graphics.Typeface;
+import android.widget.Button;
 
 
 public class year_screen extends ActionBarActivity {
@@ -18,7 +23,7 @@ public class year_screen extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.monthly_screen);
+        setContentView(R.layout.daily_screen);
 
         // Show the date
         TextView yearTitle = (TextView) findViewById(R.id.yearlyReport);
@@ -27,15 +32,14 @@ public class year_screen extends ActionBarActivity {
         yearTitle.setTypeface(tf);
 
 
-        final Button summary_button = (Button) findViewById(R.id.summary);
+        final Button summary_button = (Button) findViewById(R.id.summary_button);
         summary_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goToSummary = new Intent(year_screen.this, year_summary.class);
-                year_screen.this.startActivity(goToSummary);
+                startActivity(goToSummary);
             }
         });
-
 
     }
 

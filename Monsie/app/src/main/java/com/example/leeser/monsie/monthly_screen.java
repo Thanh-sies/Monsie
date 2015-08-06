@@ -15,6 +15,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import android.widget.Button;
+
+import android.graphics.Typeface;
 
 /**
  * Created by leeser on 7/24/15.
@@ -25,6 +42,15 @@ public class monthly_screen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.monthly_screen);
+
+        final Button random = (Button) findViewById(R.id.stupidButton);
+        random.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toYear = new Intent(monthly_screen.this, year_screen.class);
+                startActivity(toYear);
+            }
+        });
     }
 
     @Override

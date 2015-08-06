@@ -2,6 +2,7 @@ package com.example.leeser.monsie;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.provider.ContactsContract;
 import android.support.v4.app.LoaderManager;
@@ -13,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.os.Bundle;
@@ -43,12 +46,32 @@ public class monthly_screen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.monthly_screen);
 
+        // get the text entered by user in daily_screen to show up on monthly screen
+        TextView entered_text = (TextView) findViewById(R.id.textView);
+        Intent i = getIntent();
+        Bundle words = i.getExtras();
+        if (words != null) {
+            String text = (String) words.get("text1");
+            entered_text.setText(text);
+        }
+
+
+
         final Button random = (Button) findViewById(R.id.stupidButton);
         random.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent toYear = new Intent(monthly_screen.this, year_screen.class);
-                startActivity(toYear);
+                startActivity(toYear);}
+        });
+
+        final Button stupid = (Button) findViewById(R.id.done_button);
+        stupid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToYear = new Intent(monthly_screen.this, year_screen.class);
+                monthly_screen.this.startActivity(goToYear);
+
             }
         });
     }

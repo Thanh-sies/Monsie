@@ -1,20 +1,22 @@
 package com.example.leeser.monsie;
 
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.app.Activity;
+
 /**
  * Created by xiuwenlu on 7/30/2015.
  */
 public class year_summary extends ActionBarActivity {
+    int happy_count;
+    int sad_count;
+    int total_count;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +25,22 @@ public class year_summary extends ActionBarActivity {
 
         TextView yearSummary = (TextView) findViewById(R.id.total_summary);
         // Change font
-        Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
+        Typeface tf = Typeface.createFromAsset(getAssets(), "BEBAS.TTF");
         yearSummary.setTypeface(tf);
+
+        //get the emoji counts from daily_screen and display them
+        TextView happy = (TextView) findViewById(R.id.happy_summary);
+        TextView sad = (TextView) findViewById(R.id.sad_summary);
+        TextView total = (TextView) findViewById(R.id.total);
+
+        SharedPreferences variables = getSharedPreferences("variables", 0);
+        happy_count = variables.getInt("happies", 1);
+        sad_count = variables.getInt("sads", 1);
+        total_count = variables.getInt("total", 1);
+        happy.setText("Happy: "+ happy_count);
+        sad.setText("Sad: " + sad_count);
+        total.setText("Total: " + total_count);
+
 
 
         final Button closeButton = (Button) findViewById(R.id.close_button);

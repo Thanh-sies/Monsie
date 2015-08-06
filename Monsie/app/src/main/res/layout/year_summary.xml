@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="300dp"
-    android:layout_height="300dp">
+    android:layout_height="400dp">
 
     <TextView
         android:layout_width="fill_parent"
@@ -16,10 +16,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/happy_summary"
-        android:text="@string/happy_days"
         android:textSize="25sp"
-        android:paddingBottom="40dp"
-        android:paddingTop="35dp"
+        android:paddingTop="20dp"
         android:layout_below="@+id/total_summary"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -27,8 +25,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/sad_summary"
-        android:text="@string/sad_days"
         android:textSize="25sp"
+        android:paddingBottom="30pt"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -40,5 +38,18 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="41dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/total"
+        android:textSize="25sp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/close_button"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/sad_summary"
+        android:paddingBottom="15dp"/>
 
 </RelativeLayout>

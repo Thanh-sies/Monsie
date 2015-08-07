@@ -7,6 +7,47 @@
     android:background="#ccffcc"
     android:weightSum="1">
 
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/navigatebuttons"
+        android:layout_weight="0.28">
+
+    <Button
+        android:id="@+id/dayview"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="@drawable/day"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/monthview"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="@drawable/month"
+        android:layout_marginLeft="145dp"
+        android:layout_marginStart="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/yearview"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="@drawable/year"
+        android:layout_marginLeft="245dp"
+        android:layout_marginStart="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_weight="0.3"
@@ -27,6 +68,7 @@
         android:textColor="#4c6182"
         android:gravity="center_horizontal"
         />
+
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -57,6 +99,7 @@
             android:layout_alignTop="@+id/selector1"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
+
 
 
     </RelativeLayout>

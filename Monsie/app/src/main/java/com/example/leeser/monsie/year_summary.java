@@ -13,7 +13,7 @@ import android.app.Activity;
 /**
  * Created by xiuwenlu on 7/30/2015.
  */
-public class year_summary extends ActionBarActivity {
+public class year_summary extends Activity {
     int happy_count;
     int sad_count;
     int total_count;

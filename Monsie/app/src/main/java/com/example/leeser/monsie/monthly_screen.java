@@ -37,7 +37,7 @@ import android.widget.Button;
 import android.graphics.Typeface;
 
 /**
- * Created by leeser on 7/24/15.
+ * Created by Lisa Lee on 7/24/15.
  */
 public class monthly_screen extends Activity {
 
@@ -55,7 +55,34 @@ public class monthly_screen extends Activity {
             entered_text.setText(text);
         }
 
+        // navigation buttons
+        final Button day_button = (Button) findViewById(R.id.dayview);
+        final Button month_button = (Button) findViewById(R.id.monthview);
+        final Button year_button = (Button) findViewById(R.id.yearview);
 
+        day_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent goToMonth = new Intent(monthly_screen.this, daily_screen.class);
+                startActivity(goToMonth);
+            }
+        });
+
+        month_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent goToYear = new Intent(monthly_screen.this, monthly_screen.class);
+                startActivity(goToYear);
+            }
+        });
+
+        year_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent goToYear = new Intent(monthly_screen.this, year_screen.class);
+                startActivity(goToYear);
+            }
+        });
 
         final Button random = (Button) findViewById(R.id.stupidButton);
         random.setOnClickListener(new View.OnClickListener() {
@@ -76,32 +103,4 @@ public class monthly_screen extends Activity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_splash, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        switch (item.getItemId()) {
-            case R.id.action_daily:
-                setContentView(R.layout.daily_screen);
-                return true;
-            case R.id.action_monthly:
-                setContentView(R.layout.monthly_screen);
-                return true;
-            case R.id.action_year:
-                setContentView(R.layout.year_screen);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 }

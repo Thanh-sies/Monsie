@@ -57,23 +57,6 @@ public class monthly_screen extends Activity {
             }
         });
 
-        final Button random = (Button) findViewById(R.id.stupidButton);
-        random.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent toYear = new Intent(monthly_screen.this, year_screen.class);
-                startActivity(toYear);}
-        });
-
-        final Button stupid = (Button) findViewById(R.id.done_button);
-        stupid.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goToYear = new Intent(monthly_screen.this, year_screen.class);
-                monthly_screen.this.startActivity(goToYear);
-
-            }
-        });
     }
 
 }

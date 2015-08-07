@@ -19,6 +19,9 @@ import android.widget.Button;
 import android.graphics.Typeface;
 import android.widget.Toast;
 import android.content.SharedPreferences;
+import java.io.FileOutputStream;
+import android.content.Context;
+
 
 /**
  * Created by Lisa Lee on 7/17/15.
@@ -73,16 +76,6 @@ public class daily_screen extends Activity {
         day_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //initialize instances when splash screen starts
-                //setcontent view for the internally stored instance of the class
-                /*find a condition on when to view stored instance or create new intent
-                probably managed in splash screen, check if date has passed for day, if day
-                has passed, create new instance from intent method
-                --implement a similar method for clearing month and year and how long to keep
-                the information, and if keep forever, will probably need a year button
-                to navigate through the month logs and year chart and summaries
-                */
-                //need a method on finding out when the data for day was created
                 Intent goToMonth = new Intent(daily_screen.this, daily_screen.class);
                 startActivity(goToMonth);
             }
@@ -103,11 +96,6 @@ public class daily_screen extends Activity {
                 startActivity(goToYear);
             }
         });
-
-
-
-
-
 
 
         // REMEMBER TO CREDIT THE VECTOR IMAGE SOURCE:

@@ -10,6 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,7 +33,6 @@ import android.content.Context;
  */
 public class daily_screen extends Activity {
 
-    public static HashMap<String, String> memomap = new HashMap<String, String>();
     private String dateString = "";
     private static String inputString = "";
 
@@ -40,6 +44,9 @@ public class daily_screen extends Activity {
 
     int happy_size = 1;
     int sad_size = 1;
+
+    protected final static String STORETEXT = "daily_logs.txt";
+    private EditText textEditor;
 
 //    Intent variables = new Intent(daily_screen.this, year_screen.class);
 //    variables.putE
@@ -139,9 +146,17 @@ public class daily_screen extends Activity {
                 }
 
                 Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
+
                 EditText text1 = (EditText) findViewById(R.id.editText);
-                String text_entered = text1.getText().toString();
+//                String text_entered = text1.getText().toString();
 //                goToMonth.putExtra("text1", text_entered);
+
+                textEditor = (EditText) findViewById(R.id.editText);
+                saveClicked(v);
+                readFileInEditor();
+                String text_entered = textEditor.getText().toString();
+                goToMonth.putExtra("text1", text_entered);
+
 
 
                 SharedPreferences var = getSharedPreferences("variables", MODE_PRIVATE);
@@ -178,5 +193,86 @@ public class daily_screen extends Activity {
         DateFormat dateFormat = new SimpleDateFormat("EEE, MMM d");
         Date date = new Date();
         return dateFormat.format(date);
+    }
+
+    public void saveClicked(View v) {
+
+        try {
+
+            OutputStreamWriter out=
+
+                    new OutputStreamWriter(openFileOutput(STORETEXT, 0));
+
+            out.write(textEditor.getText().toString());
+
+            out.close();
+
+            Toast
+
+                    .makeText(this, "The contents are saved in the file.", Toast.LENGTH_LONG)
+
+                    .show();
+
+        }
+
+        catch (Throwable t) {
+
+            Toast
+
+                    .makeText(this, "Exception: "+t.toString(), Toast.LENGTH_LONG)
+
+                    .show();
+
+        }
+
+    }
+
+    public void readFileInEditor()
+    {
+
+        try {
+
+            InputStream in = openFileInput(STORETEXT);
+
+            if (in != null) {
+
+                InputStreamReader tmp=new InputStreamReader(in);
+
+                BufferedReader reader=new BufferedReader(tmp);
+
+                String str;
+
+                StringBuilder buf=new StringBuilder();
+
+                while ((str = reader.readLine()) != null) {
+
+                    buf.append(str+"n");
+
+                }
+
+                in.close();
+
+                textEditor.setText(buf.toString());
+
+            }
+
+        }
+
+        catch (java.io.FileNotFoundException e) {
+
+        // that's OK, we probably haven't created it yet
+
+        }
+
+        catch (Throwable t) {
+
+            Toast
+
+                    .makeText(this, "Exception: " + t.toString(), Toast.LENGTH_LONG)
+
+                    .show();
+
+        }
+
     }
 }

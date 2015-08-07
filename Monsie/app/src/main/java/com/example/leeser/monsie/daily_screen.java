@@ -24,7 +24,7 @@ import android.content.Context;
 
 
 /**
- * Created by leeser on 7/17/15.
+ * Created by Lisa Lee on 7/17/15.
  */
 public class daily_screen extends Activity {
 

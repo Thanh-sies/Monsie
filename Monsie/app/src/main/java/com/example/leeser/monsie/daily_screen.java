@@ -19,9 +19,12 @@ import android.widget.Button;
 import android.graphics.Typeface;
 import android.widget.Toast;
 import android.content.SharedPreferences;
+import java.io.FileOutputStream;
+import android.content.Context;
+
 
 /**
- * Created by leeser on 7/17/15.
+ * Created by Lisa Lee on 7/17/15.
  */
 public class daily_screen extends Activity {
 
@@ -31,19 +34,12 @@ public class daily_screen extends Activity {
 
     int happy_count = 0;
 
-    public int get_happy() {
-        return happy_count;
-    }
     public static int sad_count = 0;
 
-    int get_sad() {
-        return sad_count;
-    }
     int total_count = 0;
 
-    public int get_total() {
-        return total_count;
-    }
+    int happy_size = 1;
+    int sad_size = 1;
 
 //    Intent variables = new Intent(daily_screen.this, year_screen.class);
 //    variables.putE
@@ -73,16 +69,6 @@ public class daily_screen extends Activity {
         day_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //initialize instances when splash screen starts
-                //setcontent view for the internally stored instance of the class
-                /*find a condition on when to view stored instance or create new intent
-                probably managed in splash screen, check if date has passed for day, if day
-                has passed, create new instance from intent method
-                --implement a similar method for clearing month and year and how long to keep
-                the information, and if keep forever, will probably need a year button
-                to navigate through the month logs and year chart and summaries
-                */
-                //need a method on finding out when the data for day was created
                 Intent goToMonth = new Intent(daily_screen.this, daily_screen.class);
                 startActivity(goToMonth);
             }
@@ -103,11 +89,6 @@ public class daily_screen extends Activity {
                 startActivity(goToYear);
             }
         });
-
-
-
-
-
 
 
         // REMEMBER TO CREDIT THE VECTOR IMAGE SOURCE:
@@ -148,9 +129,13 @@ public class daily_screen extends Activity {
                 if (done_button.isSelected() && image1.isSelected()) {
                     happy_count += 1;
                     total_count += 1;
+                    happy_size += 1;
+                    sad_size -= 1;
                 } else if (done_button.isSelected() && image2.isSelected()) {
                     sad_count += 1;
                     total_count += 1;
+                    sad_size += 1;
+                    happy_size -= 1;
                 }
 
                 Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
@@ -165,6 +150,8 @@ public class daily_screen extends Activity {
                 edit.putInt("sads", sad_count);
                 edit.putInt("total", total_count);
                 edit.putString("input_text", text_entered);
+                edit.putInt("happy_size", happy_size);
+                edit.putInt("sad_size", sad_size);
 
                 edit.commit();
 

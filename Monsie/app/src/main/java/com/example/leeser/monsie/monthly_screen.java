@@ -1,8 +1,8 @@
 package com.example.leeser.monsie;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Intent;
+
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.provider.ContactsContract;
@@ -10,35 +10,14 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.os.Bundle;
-import android.app.Activity;
-import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import android.widget.Button;
 
 import android.graphics.Typeface;
 
 /**
- * Created by leeser on 7/24/15.
+ * Created by Lisa Lee on 7/24/15.
  */
 public class monthly_screen extends Activity {
     String text;
@@ -92,6 +71,7 @@ public class monthly_screen extends Activity {
             }
         });
 
+
 //        final Button random = (Button) findViewById(R.id.stupidButton);
 //        random.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -109,6 +89,7 @@ public class monthly_screen extends Activity {
 
             }
         });
+
     }
 
 }

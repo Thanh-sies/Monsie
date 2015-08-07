@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.content.Intent;
 import android.os.Handler;
 import android.app.Activity;
+import android.widget.EditText;
 import android.widget.TextView;
 
 

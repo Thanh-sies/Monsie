@@ -23,7 +23,7 @@ import android.content.SharedPreferences;
 /**
  * Created by leeser on 7/17/15.
  */
-public class daily_screen extends ActionBarActivity {
+public class daily_screen extends Activity {
 
     public static HashMap<String, String> memomap = new HashMap<String, String>();
     private String dateString = "";
@@ -65,6 +65,48 @@ public class daily_screen extends ActionBarActivity {
         // emoji buttons
         final Button image1 = (Button) findViewById(R.id.selector1);
         final Button image2 = (Button) findViewById(R.id.selector2);
+        // navigation buttons
+        final Button day_button = (Button) findViewById(R.id.dayview);
+        final Button month_button = (Button) findViewById(R.id.monthview);
+        final Button year_button = (Button) findViewById(R.id.yearview);
+
+        day_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //initialize instances when splash screen starts
+                //setcontent view for the internally stored instance of the class
+                /*find a condition on when to view stored instance or create new intent
+                probably managed in splash screen, check if date has passed for day, if day
+                has passed, create new instance from intent method
+                --implement a similar method for clearing month and year and how long to keep
+                the information, and if keep forever, will probably need a year button
+                to navigate through the month logs and year chart and summaries
+                */
+                //need a method on finding out when the data for day was created
+                Intent goToMonth = new Intent(daily_screen.this, daily_screen.class);
+                startActivity(goToMonth);
+            }
+        });
+
+        month_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent goToYear = new Intent(daily_screen.this, monthly_screen.class);
+                startActivity(goToYear);
+            }
+        });
+
+        year_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent goToYear = new Intent(daily_screen.this, year_screen.class);
+                startActivity(goToYear);
+            }
+        });
+
+
+
+
 
 
 
@@ -145,35 +187,5 @@ public class daily_screen extends ActionBarActivity {
         DateFormat dateFormat = new SimpleDateFormat("EEE, MMM d");
         Date date = new Date();
         return dateFormat.format(date);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_splash, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        switch (item.getItemId()) {
-            case R.id.action_daily:
-                setContentView(R.layout.daily_screen);
-                showDate();
-                return true;
-            case R.id.action_monthly:
-                setContentView(R.layout.monthly_screen);
-                return true;
-            case R.id.action_year:
-                setContentView(R.layout.year_screen);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 }

@@ -20,7 +20,7 @@ import android.graphics.Typeface;
 import android.widget.Button;
 import android.content.SharedPreferences;
 
-public class year_screen extends ActionBarActivity {
+public class year_screen extends Activity {
     int happy_count;
     int sad_count;
     int total_count;
@@ -29,6 +29,35 @@ public class year_screen extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.year_screen);
 
+
+        // navigation buttons
+        final Button day_button = (Button) findViewById(R.id.dayview);
+        final Button month_button = (Button) findViewById(R.id.monthview);
+        final Button year_button = (Button) findViewById(R.id.yearview);
+
+        day_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent goToMonth = new Intent(year_screen.this, daily_screen.class);
+                startActivity(goToMonth);
+            }
+        });
+
+        month_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent goToYear = new Intent(year_screen.this, monthly_screen.class);
+                startActivity(goToYear);
+            }
+        });
+
+        year_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent goToYear = new Intent(year_screen.this, year_screen.class);
+                startActivity(goToYear);
+            }
+        });
 
         //get the emoji counts from daily_screen to change size of the emojis
         SharedPreferences variables = getSharedPreferences("variables", 0);
@@ -68,32 +97,6 @@ public class year_screen extends ActionBarActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_splash, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        switch (item.getItemId()) {
-            case R.id.action_daily:
-                setContentView(R.layout.daily_screen);
-                return true;
-            case R.id.action_monthly:
-                setContentView(R.layout.monthly_screen);
-                return true;
-            case R.id.action_year:
-                setContentView(R.layout.year_screen);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 }

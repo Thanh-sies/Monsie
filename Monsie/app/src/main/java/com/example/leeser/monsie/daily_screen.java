@@ -156,7 +156,7 @@ public class daily_screen extends Activity {
                 Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
                 EditText text1 = (EditText) findViewById(R.id.editText);
                 String text_entered = text1.getText().toString();
-                goToMonth.putExtra("text1", text_entered);
+//                goToMonth.putExtra("text1", text_entered);
 
 
                 SharedPreferences var = getSharedPreferences("variables", MODE_PRIVATE);
@@ -164,9 +164,13 @@ public class daily_screen extends Activity {
                 edit.putInt("happies", happy_count);
                 edit.putInt("sads", sad_count);
                 edit.putInt("total", total_count);
+                edit.putString("input_text", text_entered);
+
                 edit.commit();
 
-                startActivity(goToMonth);
+                if (done_button.isSelected() && (image1.isSelected() || image2.isSelected())) {
+                    startActivity(goToMonth);
+                }
 
             }
         });

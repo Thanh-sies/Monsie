@@ -4,11 +4,11 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/navigatebuttons"
-        android:layout_weight="0.28">
+    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/navigatebuttons"-->
+        <!--android:layout_weight="0.28">-->
 
         <Button
             android:id="@+id/dayview"
@@ -43,32 +43,38 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-    </RelativeLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/stupidButton"
-        android:text="newButton"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:layout_gravity="center_vertical"
+                android:layout_alignBaseline="@+id/textView2"
+                android:layout_alignBottom="@+id/textView2"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:layout_gravity="center_horizontal"
+                android:layout_above="@+id/done_button"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="112dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/done_button"
-        android:id="@+id/done_button"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="30pt"
+                android:text="@string/done_button"
+                android:id="@+id/done_button"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView"
-        android:layout_below="@+id/stupidButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+                android:clickable="true"
+                android:layout_gravity="bottom"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
+    <!--</RelativeLayout>-->
 
 </RelativeLayout>

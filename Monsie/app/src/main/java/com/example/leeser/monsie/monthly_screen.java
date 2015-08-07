@@ -3,6 +3,7 @@ package com.example.leeser.monsie;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.provider.ContactsContract;
 import android.support.v4.app.LoaderManager;
@@ -40,6 +41,7 @@ import android.graphics.Typeface;
  * Created by leeser on 7/24/15.
  */
 public class monthly_screen extends Activity {
+    String text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +50,18 @@ public class monthly_screen extends Activity {
 
         // get the text entered by user in daily_screen to show up on monthly screen
         TextView entered_text = (TextView) findViewById(R.id.textView);
-        Intent i = getIntent();
-        Bundle words = i.getExtras();
-        if (words != null) {
-            String text = (String) words.get("text1");
-            entered_text.setText(text);
-        }
+        TextView entered_text2 = (TextView) findViewById(R.id.textView2);
+//        Intent i = getIntent();
+//        Bundle words = i.getExtras();
+//        if (words != null) {
+//            String text = (String) words.get("text1");
+//            entered_text.setText(text);
+//        }
+        SharedPreferences variables = getSharedPreferences("variables", 0);
+        text = variables.getString("input_text", text);
+        entered_text.setText(text);
+
+
 
         // navigation buttons
         final Button day_button = (Button) findViewById(R.id.dayview);
@@ -84,13 +92,13 @@ public class monthly_screen extends Activity {
             }
         });
 
-        final Button random = (Button) findViewById(R.id.stupidButton);
-        random.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent toYear = new Intent(monthly_screen.this, year_screen.class);
-                startActivity(toYear);}
-        });
+//        final Button random = (Button) findViewById(R.id.stupidButton);
+//        random.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent toYear = new Intent(monthly_screen.this, year_screen.class);
+//                startActivity(toYear);}
+//        });
 
         final Button stupid = (Button) findViewById(R.id.done_button);
         stupid.setOnClickListener(new View.OnClickListener() {

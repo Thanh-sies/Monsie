@@ -44,22 +44,12 @@
             android:background="#b7e5b7"/>
     </RelativeLayout>
 
-
-    <Button
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/done_button"
-        android:id="@+id/done_button"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/listView"
+        android:layout_below="@+id/navigatebuttons"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

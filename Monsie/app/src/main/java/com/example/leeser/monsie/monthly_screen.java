@@ -3,8 +3,14 @@ package com.example.leeser.monsie;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Gallery;
+import android.widget.ProgressBar;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import android.graphics.Typeface;
@@ -20,13 +26,13 @@ public class monthly_screen extends Activity {
         setContentView(R.layout.monthly_screen);
 
         // get the text entered by user in daily_screen to show up on monthly screen
-        TextView entered_text = (TextView) findViewById(R.id.textView);
-        Intent i = getIntent();
-        Bundle words = i.getExtras();
-        if (words != null) {
-            String text = (String) words.get("text1");
-            entered_text.setText(text);
-        }
+//        TextView entered_text = (TextView) findViewById(R.id.textView);
+//        Intent i = getIntent();
+//        Bundle words = i.getExtras();
+//        if (words != null) {
+//            String text = (String) words.get("text1");
+//            entered_text.setText(text);
+//        }
 
         // navigation buttons
         final Button day_button = (Button) findViewById(R.id.dayview);
@@ -56,6 +62,7 @@ public class monthly_screen extends Activity {
                 startActivity(goToYear);
             }
         });
+
 
     }
 

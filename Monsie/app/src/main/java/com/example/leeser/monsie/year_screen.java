@@ -1,21 +1,12 @@
 package com.example.leeser.monsie;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
 import android.graphics.Typeface;
 import android.widget.Button;
 import android.content.SharedPreferences;

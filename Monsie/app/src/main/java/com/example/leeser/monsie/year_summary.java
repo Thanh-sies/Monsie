@@ -2,7 +2,6 @@ package com.example.leeser.monsie;
 
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;

@@ -38,19 +38,12 @@ public class daily_screen extends Activity {
 
     int happy_count = 0;
 
-    public int get_happy() {
-        return happy_count;
-    }
     public static int sad_count = 0;
 
-    int get_sad() {
-        return sad_count;
-    }
     int total_count = 0;
 
-    public int get_total() {
-        return total_count;
-    }
+    int happy_size = 1;
+    int sad_size = 1;
 
     protected final static String STORETEXT = "daily_logs.txt";
     private EditText textEditor;
@@ -143,12 +136,21 @@ public class daily_screen extends Activity {
                 if (done_button.isSelected() && image1.isSelected()) {
                     happy_count += 1;
                     total_count += 1;
+                    happy_size += 1;
+                    sad_size -= 1;
                 } else if (done_button.isSelected() && image2.isSelected()) {
                     sad_count += 1;
                     total_count += 1;
+                    sad_size += 1;
+                    happy_size -= 1;
                 }
 
                 Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
+
+                EditText text1 = (EditText) findViewById(R.id.editText);
+//                String text_entered = text1.getText().toString();
+//                goToMonth.putExtra("text1", text_entered);
+
                 textEditor = (EditText) findViewById(R.id.editText);
                 saveClicked(v);
                 readFileInEditor();
@@ -156,14 +158,21 @@ public class daily_screen extends Activity {
                 goToMonth.putExtra("text1", text_entered);
 
 
+
                 SharedPreferences var = getSharedPreferences("variables", MODE_PRIVATE);
                 SharedPreferences.Editor edit = var.edit();
                 edit.putInt("happies", happy_count);
                 edit.putInt("sads", sad_count);
                 edit.putInt("total", total_count);
+                edit.putString("input_text", text_entered);
+                edit.putInt("happy_size", happy_size);
+                edit.putInt("sad_size", sad_size);
+
                 edit.commit();
 
-                startActivity(goToMonth);
+                if (done_button.isSelected() && (image1.isSelected() || image2.isSelected())) {
+                    startActivity(goToMonth);
+                }
 
             }
         });

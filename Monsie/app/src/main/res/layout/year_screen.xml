@@ -40,7 +40,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:background="#b7e5b7"/>
+            android:background="#92b792"/>
     </RelativeLayout>
 
     <TextView

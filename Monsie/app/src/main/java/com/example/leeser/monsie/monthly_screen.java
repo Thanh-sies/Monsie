@@ -1,24 +1,29 @@
 package com.example.leeser.monsie;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Gallery;
-import android.widget.ProgressBar;
-import android.widget.SimpleCursorAdapter;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import android.graphics.Typeface;
 
 /**
  * Created by Lisa Lee on 7/24/15.
  */
 public class monthly_screen extends Activity {
+
+    boolean clicked = false;
+    PopupWindow pop;
+    LinearLayout layout;
+    TextView tv;
+    LinearLayout.LayoutParams params;
+    LinearLayout mainLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +60,7 @@ public class monthly_screen extends Activity {
             }
         });
 
-        year_button.setOnClickListener(new View.OnClickListener(){
+        year_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goToYear = new Intent(monthly_screen.this, year_screen.class);
@@ -63,7 +68,28 @@ public class monthly_screen extends Activity {
             }
         });
 
+        pop = new PopupWindow(this);
+        tv = new TextView(this);
+        TextView showpopup = (TextView) findViewById(R.id.click);
+        showpopup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (clicked) {
+                    pop.showAtLocation(findViewById(R.id.monthly), Gravity.BOTTOM, 10, 10);
+                    pop.update(50, 50, 300, 80);
+                    clicked = false;
+                } else {
+                    pop.dismiss();
+                    clicked = true;
+                }
+            }
+        });
 
+        tv.setText("Hi this is a sample text for popup window");
+        pop.setContentView(findViewById(R.id.popup_layout));
+        //pop.showAtLocation(layout, Gravity.CENTER, 100, 100);
+//        mainLayout.addView(layout, params);
+//        setContentView(R.layout.monthly_screen);
     }
 
 }

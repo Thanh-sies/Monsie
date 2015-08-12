@@ -3,7 +3,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ccffcc">
+    android:background="#ccffcc"
+    android:id="@+id/monthly">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -31,7 +32,7 @@
             android:text="Monthly"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:background="#b7e5b7"/>
+            android:background="#92b792"/>
 
         <Button
             android:id="@+id/yearview"
@@ -44,11 +45,12 @@
             android:background="#b7e5b7"/>
     </RelativeLayout>
 
-    <ListView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_below="@+id/navigatebuttons"
+        android:text="click me"
+        android:id="@+id/click"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
 

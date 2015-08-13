@@ -93,19 +93,6 @@ public class daily_screen extends Activity {
         final Button month_button = (Button) findViewById(R.id.monthview);
         final Button year_button = (Button) findViewById(R.id.yearview);
 
-
-        day_button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent goToDay = new Intent(daily_screen.this, daily_screen.class);
-                if (dailyBundle==null) {
-                    startActivity(goToDay);
-                } else{
-                    onRestoreInstanceState(dailyBundle);
-                }
-            }
-        });
-
         month_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

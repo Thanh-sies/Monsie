@@ -104,18 +104,6 @@ public class monthly_screen extends Activity {
             }
         });
 
-        month_button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent goToMonth = new Intent(monthly_screen.this, monthly_screen.class);
-                if (monthlyBundle == null){
-                    startActivity(goToMonth);
-                } else {
-                    onRestoreInstanceState(monthlyBundle);
-                }
-            }
-        });
-
         year_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

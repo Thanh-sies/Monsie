@@ -76,30 +76,8 @@ public class monthly_screen extends Activity {
             edit.apply();
         }
 
-
-//        TextView clickText = (TextView) findViewById(R.id.Itemname);
-//
-//        final RelativeLayout popup = (RelativeLayout) findViewById(R.id.popup);
-//        clickText.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (popup.getVisibility() == View.INVISIBLE) {
-//                    popup.setVisibility(View.VISIBLE);
-//                }
-//            }
-//        });
-//
-//        Button removePopup = (Button) findViewById(R.id.ok_button);
-//        removePopup.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                popup.setVisibility(View.INVISIBLE);
-//            }
-//        });
-
         // navigation buttons
         final Button day_button = (Button) findViewById(R.id.dayview);
-        final Button month_button = (Button) findViewById(R.id.monthview);
         final Button year_button = (Button) findViewById(R.id.yearview);
 
         day_button.setOnClickListener(new View.OnClickListener(){
@@ -127,17 +105,6 @@ public class monthly_screen extends Activity {
             }
         });
     }
-
-
-//    private void createNewEntry(ArrayList<String> arr, ArrayList<Integer> img) {
-//        lst = (ListView) findViewById(R.id.listfeed);
-//        listAdapter = new custom_adapter(this, arr, img);
-//        lst.setAdapter(listAdapter);
-//    }
-//    private void createNewEntry(ArrayList<String> arr, ArrayList<Integer> img) {
-//        lst = (ListView) findViewById(R.id.listfeed);
-//        listAdapter = new custom_adapter(this, arr, img);
-//        lst.setAdapter(listAdapter);
 
     private void createNewEntry(boolean isHappy, String txt) {
         text_arr.add(txt);

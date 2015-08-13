@@ -33,9 +33,9 @@ public class year_summary extends Activity {
         TextView total = (TextView) findViewById(R.id.total);
 
         SharedPreferences variables = getSharedPreferences("variables", 0);
-        happy_count = variables.getInt("happies", 1);
-        sad_count = variables.getInt("sads", 1);
-        total_count = variables.getInt("total", 1);
+        happy_count = variables.getInt("happies", 0);
+        sad_count = variables.getInt("sads", 0);
+        total_count = variables.getInt("total", 0);
         happy.setText("Happy: "+ happy_count);
         sad.setText("Sad: " + sad_count);
         total.setText("Total: " + total_count);

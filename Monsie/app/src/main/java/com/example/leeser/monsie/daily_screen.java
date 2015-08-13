@@ -43,11 +43,6 @@ public class daily_screen extends Activity {
     private static String inputString = "";
     public SharedPreferences variables;
 
-//get variables from sharedpreferences
-//     variables = PreferenceManager.getDefaultSharedPreferences(this);
-////     = variables.getInt("happies", 1);
-//    int sadSharedPreferences variables = getSharedPreferences("variables", 0);
-
     int happy_count;
     int sad_count;
     int total_count;
@@ -93,7 +88,6 @@ public class daily_screen extends Activity {
         final Button image1 = (Button) findViewById(R.id.selector1);
         final Button image2 = (Button) findViewById(R.id.selector2);
         // navigation buttons
-        final Button day_button = (Button) findViewById(R.id.dayview);
         final Button month_button = (Button) findViewById(R.id.monthview);
         final Button year_button = (Button) findViewById(R.id.yearview);
 

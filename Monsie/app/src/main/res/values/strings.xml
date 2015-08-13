@@ -3,7 +3,7 @@
     <string name="day">Day</string>
     <string name="month">Month</string>
     <string name="year">Year</string>
-    <string name="yearlyPage">YEARLY REPORT!</string>
+    <string name="yearlyPage">Recent Moods!</string>
     <string name="done_button">Done</string>
 
    <string name="hello_world">Hello world!</string>
@@ -13,7 +13,7 @@
     <string name="yearly">Yearly</string>
     <string name="textbox">Write down how you feel today!</string>
     <string name="ask_emoji">How do you feel today?</string>
-    <string name="summary">Summary</string>
+    <string name="summary">Year Summary</string>
     <string name="happy_days">Happy Days:</string>
     <string name="sad_days">Sad Days:</string>
     <string name="total_summary">Total Summary</string>

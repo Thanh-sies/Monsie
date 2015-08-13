@@ -13,11 +13,12 @@ import android.widget.TextView;
 import android.graphics.Typeface;
 import android.widget.Button;
 import android.content.SharedPreferences;
-import android.widget.FrameLayout.LayoutParams;
+
 
 public class year_screen extends Activity {
     int happy_count;
     int sad_count;
+    int total_count;
     protected static Bundle yearBundle;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,6 @@ public class year_screen extends Activity {
         // navigation buttons
         final Button day_button = (Button) findViewById(R.id.dayview);
         final Button month_button = (Button) findViewById(R.id.monthview);
-        final Button year_button = (Button) findViewById(R.id.yearview);
 
         day_button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -58,9 +58,9 @@ public class year_screen extends Activity {
 
         //get the emoji counts from daily_screen to change size of the emojis
         SharedPreferences variables = getSharedPreferences("variables", 0);
-        happy_count = variables.getInt("happy_size", 1);
-        sad_count = variables.getInt("sad_size", 1);
-
+        happy_count = variables.getInt("happy_size", happy_count);
+        sad_count = variables.getInt("sad_size", happy_count);
+        total_count = variables.getInt("total_count", total_count);
 
 
         //Change size of the emojis
@@ -96,6 +96,26 @@ public class year_screen extends Activity {
                 startActivity(goToSummary);
             }
         });
+
+
+//
+//        final RelativeLayout popup = (RelativeLayout) findViewById(R.id.popup_summary);
+//        summary_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (popup.getVisibility() == View.INVISIBLE) {
+//                    popup.setVisibility(View.VISIBLE);
+//                }
+//            }
+//        });
+//
+//        Button removePopup = (Button) findViewById(R.id.ok_button);
+//        removePopup.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                popup.setVisibility(View.INVISIBLE);
+//            }
+//        });
     }
 
 

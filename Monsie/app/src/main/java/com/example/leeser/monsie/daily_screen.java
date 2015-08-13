@@ -212,6 +212,7 @@ public class daily_screen extends Activity {
             }
         });
     }
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
 

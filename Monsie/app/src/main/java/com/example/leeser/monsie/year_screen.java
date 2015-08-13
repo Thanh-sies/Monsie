@@ -1,15 +1,19 @@
 package com.example.leeser.monsie;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.graphics.Typeface;
 import android.widget.Button;
 import android.content.SharedPreferences;
+import android.widget.FrameLayout.LayoutParams;
 
 public class year_screen extends Activity {
     int happy_count;
@@ -62,23 +66,22 @@ public class year_screen extends Activity {
         happy_size.width = 100 * happy_count;
         happy_size.height = 100 * happy_count;
 
-        if ((happy_count - sad_count) >= 5) {
-            happy_size.width = 450;
-            happy_size.height = 450;
-        }
-
+//        if ((happy_count - sad_count) >= 5) {
+//            happy_size.width = 450;
+//            happy_size.height = 450;
+//        }
         happy_view.setLayoutParams(happy_size);
 
         ImageView sad_view = (ImageView) findViewById(R.id.imageView2);
         ViewGroup.LayoutParams sad_size = sad_view.getLayoutParams();
 
+
         sad_size.width = 100 * sad_count;
         sad_size.height = 100 * sad_count;
-        if ((sad_count - happy_count) >= 5) {
-            sad_size.width = 450;
-            sad_size.height = 450;
+        if (sad_count <= 1) {
+            RelativeLayout lp = new RelativeLayout(getApplicationContext());
+            lp.setGravity(Gravity.CENTER);
         }
-
         sad_view.setLayoutParams(sad_size);
 
 
@@ -86,7 +89,7 @@ public class year_screen extends Activity {
         // Show the date
         TextView yearTitle = (TextView) findViewById(R.id.yearlyReport);
         // Change font
-        Typeface tf = Typeface.createFromAsset(getAssets(),"BEBAS.TTF");
+        Typeface tf = Typeface.createFromAsset(getAssets(), "BEBAS.TTF");
         yearTitle.setTypeface(tf);
 
         final Button summary_button = (Button) findViewById(R.id.summary_button);

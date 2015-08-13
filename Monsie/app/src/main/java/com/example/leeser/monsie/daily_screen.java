@@ -51,8 +51,8 @@ public class daily_screen extends Activity {
     int happy_count;
     int sad_count;
     int total_count;
-    int happy_size = 1;
-    int sad_size = 1;
+    int happy_size;
+    int sad_size;
     protected final static String STORETEXT = "daily_logs.txt";
     private EditText textEditor;
 
@@ -65,11 +65,11 @@ public class daily_screen extends Activity {
         setContentView(R.layout.daily_screen);
 
         variables = getSharedPreferences("variables", MODE_PRIVATE);
-        happy_count = variables.getInt("happies", 1);
-        sad_count = variables.getInt("sads", 1);
-        total_count = variables.getInt("total", 1);
-        happy_size =  variables.getInt("happy_size", 1);
-        sad_size =  variables.getInt("sad_size", 1);
+        happy_count = variables.getInt("happies", 0);
+        sad_count = variables.getInt("sads", 0);
+        total_count = variables.getInt("total", 0);
+        happy_size =  variables.getInt("happy_size", 6);
+        sad_size =  variables.getInt("sad_size", 6);
 
         // Show the date
         TextView dateView = (TextView) findViewById(R.id.date);
@@ -148,12 +148,25 @@ public class daily_screen extends Activity {
                     happy_count += 1;
                     total_count += 1;
                     happy_size += 1;
+                    if (happy_size >= 6) {
+                        happy_size = 6;
+                    }
                     sad_size -= 1;
+                    if (sad_size <= 1) {
+                        sad_size = 1;
+                    };
+//
                 } else if (done_button.isSelected() && image2.isSelected()) {
                     sad_count += 1;
                     total_count += 1;
                     sad_size += 1;
+                    if (sad_size  >= 6) {
+                       sad_size = 6;
+                    }
                     happy_size -= 1;
+                    if (happy_size <= 1) {
+                        happy_size = 1;
+                    }
                 }
 
                 Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);

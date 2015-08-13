@@ -33,7 +33,7 @@ public class monthly_screen extends Activity {
 
         // get the text entered by user in daily_screen to show up on monthly screen
         TextView entered_text = (TextView) findViewById(R.id.textView);
-        TextView entered_text2 = (TextView) findViewById(R.id.textView2);
+//        TextView entered_text2 = (TextView) findViewById(R.id.textView2);
 //        Intent i = getIntent();
 //        Bundle words = i.getExtras();
 //        if (words != null) {
@@ -45,24 +45,24 @@ public class monthly_screen extends Activity {
         text = variables.getString("input_text", text);
         entered_text.setText(text);
 
-        TextView clickText = (TextView) findViewById(R.id.clickme);
-        final RelativeLayout popup = (RelativeLayout) findViewById(R.id.popup);
-        clickText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (popup.getVisibility() == View.INVISIBLE) {
-                    popup.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-        Button removePopup = (Button) findViewById(R.id.ok_button);
-        removePopup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popup.setVisibility(View.INVISIBLE);
-            }
-        });
+//        TextView clickText = (TextView) findViewById(R.id.clickme);
+//        final RelativeLayout popup = (RelativeLayout) findViewById(R.id.popup);
+//        clickText.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (popup.getVisibility() == View.INVISIBLE) {
+//                    popup.setVisibility(View.VISIBLE);
+//                }
+//            }
+//        });
+//
+//        Button removePopup = (Button) findViewById(R.id.ok_button);
+//        removePopup.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                popup.setVisibility(View.INVISIBLE);
+//            }
+//        });
 
         // navigation buttons
         final Button day_button = (Button) findViewById(R.id.dayview);
@@ -72,16 +72,16 @@ public class monthly_screen extends Activity {
         day_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent goToMonth = new Intent(monthly_screen.this, daily_screen.class);
-                startActivity(goToMonth);
+                Intent goToDay = new Intent(monthly_screen.this, daily_screen.class);
+                startActivity(goToDay);
             }
         });
 
         month_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent goToYear = new Intent(monthly_screen.this, monthly_screen.class);
-                startActivity(goToYear);
+                Intent goToMonth = new Intent(monthly_screen.this, monthly_screen.class);
+                startActivity(goToMonth);
             }
         });
 

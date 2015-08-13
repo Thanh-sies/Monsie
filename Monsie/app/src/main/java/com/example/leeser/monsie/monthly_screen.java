@@ -14,7 +14,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ArrayAdapter;
 
+import org.apache.commons.io.FileUtils;
 import org.w3c.dom.Text;
+
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -25,13 +27,21 @@ import java.util.Set;
 import java.util.HashMap;
 
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Set;
+
+
 /**
  * Created by Lisa Lee on 7/24/15.
  */
 public class monthly_screen extends Activity {
     String text;
-    private ListView lst;
+    private ArrayList<String> text_arr = new ArrayList<>();
+    private ArrayList<String> img_arr = new ArrayList<>();
     private custom_adapter listAdapter;
+    private ListView lItems;
     boolean happy_select;
     boolean sad_select;
 
@@ -40,27 +50,27 @@ public class monthly_screen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.monthly_screen);
 
+        // get the text entered by user in daily_screen to show up on monthly screen
+        //TextView entered_text = (TextView) findViewById(R.id.textView);
+        //TextView entered_text2 = (TextView) findViewById(R.id.textView2);
 
         SharedPreferences variables = getSharedPreferences("variables", 0);
         text = variables.getString("input_text", text);
         happy_select = variables.getBoolean("happy_select", happy_select);
         sad_select = variables.getBoolean("sad_select", sad_select);
 
+        readItems();
 
-        ArrayList<String> arr = new ArrayList<>();
-        ArrayList<Integer>img = new ArrayList<>();
-        arr.add(text);
-        if (happy_select) {
-            img.add(R.mipmap.happy2);
-            createNewEntry(arr, img);
-        } else if (sad_select) {
-            img.add(R.mipmap.sad2);
-            createNewEntry(arr, img);
-        }
+
+        lItems = (ListView) findViewById(R.id.listfeed);
+        listAdapter = new custom_adapter(this, text_arr, img_arr);
+        lItems.setAdapter(listAdapter);
+        boolean isHappy = happy_select;
+        createNewEntry(isHappy, text);
 
 
 //        TextView clickText = (TextView) findViewById(R.id.Itemname);
-
+//
 //        final RelativeLayout popup = (RelativeLayout) findViewById(R.id.popup);
 //        clickText.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -109,14 +119,50 @@ public class monthly_screen extends Activity {
         });
     }
 
+
 //    private void createNewEntry(ArrayList<String> arr, ArrayList<Integer> img) {
 //        lst = (ListView) findViewById(R.id.listfeed);
 //        listAdapter = new custom_adapter(this, arr, img);
 //        lst.setAdapter(listAdapter);
 //    }
-    private void createNewEntry(ArrayList<String> arr, ArrayList<Integer> img) {
-        lst = (ListView) findViewById(R.id.listfeed);
-        listAdapter = new custom_adapter(this, arr, img);
-        lst.setAdapter(listAdapter);
+//    private void createNewEntry(ArrayList<String> arr, ArrayList<Integer> img) {
+//        lst = (ListView) findViewById(R.id.listfeed);
+//        listAdapter = new custom_adapter(this, arr, img);
+//        lst.setAdapter(listAdapter);
+
+    private void createNewEntry(boolean isHappy, String txt) {
+        text_arr.add(txt);
+        if (isHappy) {
+            img_arr.add("Happy");
+        } else {
+            img_arr.add("Sad");
+        }
+        listAdapter.notifyDataSetChanged();
+        writeItems();
+    }
+
+    private void readItems() {
+        File filesDir = getFilesDir();
+        File msgFile = new File(filesDir, "msg.txt");
+        File imgFile = new File(filesDir, "img.txt");
+        try {
+            text_arr = new ArrayList<String>(FileUtils.readLines(msgFile));
+            img_arr = new ArrayList<String>(FileUtils.readLines(imgFile));
+        } catch (IOException e) {
+            text_arr = new ArrayList<String>();
+        }
+    }
+
+    private void writeItems() {
+        File filesDir = getFilesDir();
+        File msgFile = new File(filesDir, "msg.txt");
+        File imgFile = new File(filesDir, "img.txt");
+        try {
+            FileUtils.writeLines(msgFile, text_arr);
+            FileUtils.writeLines(imgFile, img_arr);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

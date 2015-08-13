@@ -56,6 +56,7 @@ public class daily_screen extends Activity {
     String date_check;
     boolean happy_select;
     boolean sad_select;
+    boolean done_select;
     protected final static String STORETEXT = "daily_logs.txt";
     private EditText textEditor;
 
@@ -75,6 +76,7 @@ public class daily_screen extends Activity {
         happy_select = variables.getBoolean("happy_select",false);
         sad_select = variables.getBoolean("sad_select", false);
         date_check = variables.getString("date_check", date_check);
+        done_select = variables.getBoolean("done_select", done_select);
 
 
         // Show the date
@@ -96,17 +98,6 @@ public class daily_screen extends Activity {
         final Button year_button = (Button) findViewById(R.id.yearview);
 
 
-        day_button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent goToDay = new Intent(daily_screen.this, daily_screen.class);
-                if (dailyBundle==null) {
-                    startActivity(goToDay);
-                } else{
-                    onRestoreInstanceState(dailyBundle);
-                }
-            }
-        });
 
         month_button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -161,8 +152,8 @@ public class daily_screen extends Activity {
         done_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 done_button.setSelected(true);
+
                 if (done_button.isSelected() && image1.isSelected()) {
                     sad_select = false;
                     happy_select = true;
@@ -178,6 +169,7 @@ public class daily_screen extends Activity {
                     };
 //
                 } else if (done_button.isSelected() && image2.isSelected()) {
+//                    done_button.setSelected(true);
                     happy_select = false;
                     sad_select = true;
                     sad_count += 1;
@@ -190,20 +182,26 @@ public class daily_screen extends Activity {
                     if (happy_size <= 1) {
                         happy_size = 1;
                     }
+                } else {
+                    done_button.setSelected(false);
                 }
 
+                done_select = done_button.isSelected();
+                SharedPreferences.Editor edit = variables.edit();
 
 
                 if (done_button.isSelected() && (image1.isSelected() || image2.isSelected())) {
 //                    &&
 //                    dateString == date_check
+
+
                     Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
 
                     textEditor = (EditText) findViewById(R.id.editText);
                     String text_entered = textEditor.getText().toString();
                     goToMonth.putExtra("text1", text_entered);
 
-                    SharedPreferences.Editor edit = variables.edit();
+
                     edit.putInt("happies", happy_count);
                     edit.putInt("sads", sad_count);
                     edit.putInt("total", total_count);
@@ -213,12 +211,17 @@ public class daily_screen extends Activity {
                     edit.putBoolean("happy_select", happy_select);
                     edit.putBoolean("sad_select", sad_select);
                     edit.putString("date_check", date_check);
+                    edit.putBoolean("done_select", done_select);
+
 
                     edit.apply();
                     startActivity(goToMonth);
                 } else {
                     CharSequence text;
-                    if (image1.isSelected() == false && image2.isSelected()==false ) {
+                    done_select = false;
+                    edit.putBoolean("done_select", done_select);
+                    edit.apply();
+                    if (!image1.isSelected() && !image2.isSelected()) {
                          text = "Please select an emoji first!";
                     } else {
                          text = "You already made an entry for today!";

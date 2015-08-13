@@ -58,7 +58,7 @@
        />
 
     <Button
-        android:layout_width="180dp"
+        android:layout_width="80pt"
         android:layout_height="wrap_content"
         android:id="@+id/summary_button"
         android:text="@string/summary"

@@ -57,26 +57,25 @@ public class monthly_screen extends Activity {
         boolean isHappy = happy_select;
         createNewEntry(isHappy, text);
 
-        TextView clickText = (TextView) findViewById(R.id.Itemname);
-
-        final RelativeLayout popup = (RelativeLayout) findViewById(R.id.popup);
-        clickText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (popup.getVisibility() == View.INVISIBLE) {
-                    popup.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-        Button removePopup = (Button) findViewById(R.id.ok_button);
-        removePopup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popup.setVisibility(View.INVISIBLE);
-            }
-        });
-
+//        TextView clickText = (TextView) findViewById(R.id.Itemname);
+//
+//        final RelativeLayout popup = (RelativeLayout) findViewById(R.id.popup);
+//        clickText.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (popup.getVisibility() == View.INVISIBLE) {
+//                    popup.setVisibility(View.VISIBLE);
+//                }
+//            }
+//        });
+//
+//        Button removePopup = (Button) findViewById(R.id.ok_button);
+//        removePopup.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                popup.setVisibility(View.INVISIBLE);
+//            }
+//        });
 
         // navigation buttons
         final Button day_button = (Button) findViewById(R.id.dayview);

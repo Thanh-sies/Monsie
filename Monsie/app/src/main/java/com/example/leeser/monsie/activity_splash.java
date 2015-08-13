@@ -21,6 +21,7 @@ public class activity_splash extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+
         new Handler().postDelayed(new Runnable() {
 
 

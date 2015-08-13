@@ -44,6 +44,7 @@ public class monthly_screen extends Activity {
     private ListView lItems;
     boolean happy_select;
     boolean sad_select;
+    boolean done_select;
 
     protected static Bundle monthlyBundle;
 
@@ -57,6 +58,7 @@ public class monthly_screen extends Activity {
         text = variables.getString("input_text", text);
         happy_select = variables.getBoolean("happy_select", happy_select);
         sad_select = variables.getBoolean("sad_select", sad_select);
+        done_select = variables.getBoolean("done_select", done_select);
 
         readItems();
 
@@ -64,7 +66,13 @@ public class monthly_screen extends Activity {
         listAdapter = new custom_adapter(this, text_arr, img_arr);
         lItems.setAdapter(listAdapter);
         boolean isHappy = happy_select;
-        createNewEntry(isHappy, text);
+        if (done_select) {
+            createNewEntry(isHappy, text);
+            done_select = false;
+            SharedPreferences.Editor edit = variables.edit();
+            edit.putBoolean("done_select", done_select);
+            edit.apply();
+        }
 
 
 //        TextView clickText = (TextView) findViewById(R.id.Itemname);
@@ -116,17 +124,6 @@ public class monthly_screen extends Activity {
             }
         });
     }
-
-
-//    private void createNewEntry(ArrayList<String> arr, ArrayList<Integer> img) {
-//        lst = (ListView) findViewById(R.id.listfeed);
-//        listAdapter = new custom_adapter(this, arr, img);
-//        lst.setAdapter(listAdapter);
-//    }
-//    private void createNewEntry(ArrayList<String> arr, ArrayList<Integer> img) {
-//        lst = (ListView) findViewById(R.id.listfeed);
-//        listAdapter = new custom_adapter(this, arr, img);
-//        lst.setAdapter(listAdapter);
 
     private void createNewEntry(boolean isHappy, String txt) {
         text_arr.add(txt);

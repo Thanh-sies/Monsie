@@ -1,6 +1,5 @@
 package com.example.leeser.monsie;
 
-import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,7 +7,6 @@ import android.view.MenuItem;
 import android.content.Intent;
 import android.os.Handler;
 import android.app.Activity;
-import android.widget.EditText;
 import android.widget.TextView;
 
 

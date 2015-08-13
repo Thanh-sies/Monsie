@@ -1,40 +1,30 @@
 package com.example.leeser.monsie;
 
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import android.widget.Button;
 
 import android.graphics.Typeface;
 import android.widget.Toast;
 import android.content.SharedPreferences;
-import java.io.FileOutputStream;
 import android.content.Context;
 
 /**
+ * Vector images in this application was taken from
+ * http://www.vecteezy.com/vector-art/82360-rounded-emoticon-vectors-with-stroke
+ * created by designer zhaolifang
+ *
  * Created by Lisa Lee on 7/17/15.
  */
 public class daily_screen extends Activity {
@@ -42,11 +32,6 @@ public class daily_screen extends Activity {
     private String dateString = "";
     private static String inputString = "";
     public SharedPreferences variables;
-
-//get variables from sharedpreferences
-//     variables = PreferenceManager.getDefaultSharedPreferences(this);
-////     = variables.getInt("happies", 1);
-//    int sadSharedPreferences variables = getSharedPreferences("variables", 0);
 
     int happy_count;
     int sad_count;
@@ -57,7 +42,6 @@ public class daily_screen extends Activity {
     boolean happy_select;
     boolean sad_select;
     boolean done_select;
-    protected final static String STORETEXT = "daily_logs.txt";
     private EditText textEditor;
 
     protected static Bundle dailyBundle;
@@ -122,9 +106,6 @@ public class daily_screen extends Activity {
             }
         });
 
-
-        // REMEMBER TO CREDIT THE VECTOR IMAGE SOURCE:
-        // http://www.vecteezy.com/vector-art/82360-rounded-emoticon-vectors-with-stroke
         image1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -191,7 +172,6 @@ public class daily_screen extends Activity {
                 if (done_button.isSelected() && (image1.isSelected() || image2.isSelected())) {
 //                    &&
 //                    dateString == date_check
-
 
                     Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
 

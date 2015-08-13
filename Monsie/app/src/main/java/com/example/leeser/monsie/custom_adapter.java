@@ -1,13 +1,11 @@
 package com.example.leeser.monsie;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,17 +35,6 @@ public class custom_adapter extends ArrayAdapter<String> {
         this.imgid=imgid;
     }
 
-    //    public View getView(int position,View view,ViewGroup parent) {
-//        LayoutInflater inflater=context.getLayoutInflater();
-//        View rowView=inflater.inflate(R.layout.monthly_row, null,true);
-//
-//        TextView txtTitle = (TextView) rowView.findViewById(R.id.Itemname);
-//        ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
-//
-//        txtTitle.setText(itemname.get(position));
-//        imageView.setImageResource(imgid.get(position));
-//        return rowView;
-//    };
     public View getView(int position,View view,ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.list_row, null, true);

@@ -1,19 +1,15 @@
 package com.example.leeser.monsie;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.graphics.Typeface;
 import android.widget.Button;
 import android.content.SharedPreferences;
-import android.widget.FrameLayout.LayoutParams;
 
 public class year_screen extends Activity {
     int happy_count;
@@ -29,7 +25,6 @@ public class year_screen extends Activity {
         // navigation buttons
         final Button day_button = (Button) findViewById(R.id.dayview);
         final Button month_button = (Button) findViewById(R.id.monthview);
-        final Button year_button = (Button) findViewById(R.id.yearview);
 
         day_button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -55,12 +50,11 @@ public class year_screen extends Activity {
             }
         });
 
+
         //get the emoji counts from daily_screen to change size of the emojis
         SharedPreferences variables = getSharedPreferences("variables", 0);
         happy_count = variables.getInt("happy_size", 1);
         sad_count = variables.getInt("sad_size", 1);
-
-
 
         //Change size of the emojis
         ImageView happy_view = (ImageView) findViewById(R.id.imageView);
@@ -73,12 +67,9 @@ public class year_screen extends Activity {
         ImageView sad_view = (ImageView) findViewById(R.id.imageView2);
         ViewGroup.LayoutParams sad_size = sad_view.getLayoutParams();
 
-
         sad_size.width = 105 * sad_count;
         sad_size.height = 105 * sad_count;
         sad_view.setLayoutParams(sad_size);
-
-
 
         // Show the date
         TextView yearTitle = (TextView) findViewById(R.id.yearlyReport);

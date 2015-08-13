@@ -40,8 +40,6 @@ public class year_summary extends Activity {
         sad.setText("Sad: " + sad_count);
         total.setText("Total: " + total_count);
 
-
-
         final Button closeButton = (Button) findViewById(R.id.close_button);
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override

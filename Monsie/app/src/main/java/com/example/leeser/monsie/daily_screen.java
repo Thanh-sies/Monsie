@@ -158,7 +158,7 @@ public class daily_screen extends Activity {
                     if (sad_size <= 1) {
                         sad_size = 1;
                     };
-//
+
                 } else if (done_button.isSelected() && image2.isSelected()) {
                     happy_select = false;
                     sad_select = true;

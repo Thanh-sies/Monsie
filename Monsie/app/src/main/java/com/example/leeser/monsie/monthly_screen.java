@@ -39,7 +39,7 @@ import java.util.Set;
 public class monthly_screen extends Activity {
     String text;
     private ArrayList<String> text_arr = new ArrayList<>();
-    private ArrayList<Boolean> img_arr = new ArrayList<>();
+    private ArrayList<String> img_arr = new ArrayList<>();
     private custom_adapter listAdapter;
     private ListView lItems;
     boolean happy_select;
@@ -50,17 +50,12 @@ public class monthly_screen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.monthly_screen);
 
-        // get the text entered by user in daily_screen to show up on monthly screen
-        //TextView entered_text = (TextView) findViewById(R.id.textView);
-        //TextView entered_text2 = (TextView) findViewById(R.id.textView2);
-
         SharedPreferences variables = getSharedPreferences("variables", 0);
         text = variables.getString("input_text", text);
         happy_select = variables.getBoolean("happy_select", happy_select);
         sad_select = variables.getBoolean("sad_select", sad_select);
 
         readItems();
-
 
         lItems = (ListView) findViewById(R.id.listfeed);
         listAdapter = new custom_adapter(this, text_arr, img_arr);
@@ -132,7 +127,11 @@ public class monthly_screen extends Activity {
 
     private void createNewEntry(boolean isHappy, String txt) {
         text_arr.add(txt);
-        img_arr.add(isHappy);
+        if (isHappy) {
+            img_arr.add("Happy");
+        } else {
+            img_arr.add("Sad");
+        }
         listAdapter.notifyDataSetChanged();
         writeItems();
     }
@@ -143,7 +142,7 @@ public class monthly_screen extends Activity {
         File imgFile = new File(filesDir, "img.txt");
         try {
             text_arr = new ArrayList<String>(FileUtils.readLines(msgFile));
-            img_arr = new ArrayList<Boolean>(FileUtils.readLines(imgFile));
+            img_arr = new ArrayList<String>(FileUtils.readLines(imgFile));
         } catch (IOException e) {
             text_arr = new ArrayList<String>();
         }

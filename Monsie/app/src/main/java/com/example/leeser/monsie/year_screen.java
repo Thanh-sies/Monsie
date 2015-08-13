@@ -32,16 +32,16 @@ public class year_screen extends Activity {
         day_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent goToMonth = new Intent(year_screen.this, daily_screen.class);
-                startActivity(goToMonth);
+                Intent goToDay = new Intent(year_screen.this, daily_screen.class);
+                startActivity(goToDay);
             }
         });
 
         month_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent goToYear = new Intent(year_screen.this, monthly_screen.class);
-                startActivity(goToYear);
+                Intent goToMonth = new Intent(year_screen.this, monthly_screen.class);
+                startActivity(goToMonth);
             }
         });
 

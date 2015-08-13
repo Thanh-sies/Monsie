@@ -1,51 +1,54 @@
 package com.example.leeser.monsie;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Intent;
 
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.provider.ContactsContract;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Gallery;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.ArrayAdapter;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 /**
  * Created by Lisa Lee on 7/24/15.
  */
 public class monthly_screen extends Activity {
     String text;
+    private ListView lst;
+    private custom_adapter listAdapter;
+    boolean happy_select;
+    boolean sad_select;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.monthly_screen);
 
-        // get the text entered by user in daily_screen to show up on monthly screen
-        TextView entered_text = (TextView) findViewById(R.id.textView);
-//        TextView entered_text2 = (TextView) findViewById(R.id.textView2);
-//        Intent i = getIntent();
-//        Bundle words = i.getExtras();
-//        if (words != null) {
-//            String text = (String) words.get("text1");
-//            entered_text.setText(text);
-//        }
 
         SharedPreferences variables = getSharedPreferences("variables", 0);
         text = variables.getString("input_text", text);
-        entered_text.setText(text);
+        happy_select = variables.getBoolean("happy_select", happy_select);
+        sad_select = variables.getBoolean("sad_select", sad_select);
+        //entered_text.setText(text);
 
-//        TextView clickText = (TextView) findViewById(R.id.clickme);
+
+        ArrayList<String> arr = new ArrayList<>();
+        ArrayList<Integer> img = new ArrayList<>();
+        arr.add(text);
+        img.add(R.mipmap.sad2);
+        createNewEntry(arr, img);
+
+//        TextView clickText = (TextView) findViewById(R.id.Itemname);
+
 //        final RelativeLayout popup = (RelativeLayout) findViewById(R.id.popup);
 //        clickText.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -92,16 +95,11 @@ public class monthly_screen extends Activity {
                 startActivity(goToYear);
             }
         });
-
-//        final Button stupid = (Button) findViewById(R.id.done_button);
-//        stupid.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent goToYear = new Intent(monthly_screen.this, year_screen.class);
-//                monthly_screen.this.startActivity(goToYear);
-//
-//            }
-//        });
     }
 
+    private void createNewEntry(ArrayList<String> arr, ArrayList<Integer> img) {
+        lst = (ListView) findViewById(R.id.listfeed);
+        listAdapter = new custom_adapter(this, arr, img);
+        lst.setAdapter(listAdapter);
+    }
 }

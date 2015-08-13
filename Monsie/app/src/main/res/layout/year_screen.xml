@@ -81,12 +81,11 @@
     </RelativeLayout>
 
     <ImageView
-        android:scaleType="fitCenter"
+        android:scaleType="fitStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:src="@mipmap/happy2"
-        android:layout_gravity="center"
         android:maxHeight="200pt"
         android:maxWidth="200pt"
         android:paddingTop="10pt"
@@ -105,8 +104,8 @@
         android:maxWidth="200pt"
         android:paddingTop="10pt"
         android:paddingBottom="10pt"
-        android:scaleType="fitCenter"
-        android:layout_toRightOf="@+id/relativeLayout"
-        android:layout_below="@+id/imageView" />
+        android:layout_below="@+id/imageView"
+        android:layout_alignRight="@+id/summary_button"
+        android:layout_alignEnd="@+id/summary_button" />
 
 </RelativeLayout>

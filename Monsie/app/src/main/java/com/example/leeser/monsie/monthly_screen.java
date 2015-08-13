@@ -50,9 +50,6 @@ public class monthly_screen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.monthly_screen);
 
-        // get the text entered by user in daily_screen to show up on monthly screen
-        //TextView entered_text = (TextView) findViewById(R.id.textView);
-        //TextView entered_text2 = (TextView) findViewById(R.id.textView2);
 
         SharedPreferences variables = getSharedPreferences("variables", 0);
         text = variables.getString("input_text", text);

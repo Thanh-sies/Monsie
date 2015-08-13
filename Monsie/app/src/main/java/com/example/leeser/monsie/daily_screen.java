@@ -53,6 +53,7 @@ public class daily_screen extends Activity {
     int total_count;
     int happy_size;
     int sad_size;
+    String date_check;
     boolean happy_select;
     boolean sad_select;
     protected final static String STORETEXT = "daily_logs.txt";
@@ -66,10 +67,11 @@ public class daily_screen extends Activity {
         happy_count = variables.getInt("happies", 0);
         sad_count = variables.getInt("sads", 0);
         total_count = variables.getInt("total", 0);
-        happy_size =  variables.getInt("happy_size", 6);
-        sad_size =  variables.getInt("sad_size", 6);
+        happy_size =  variables.getInt("happy_size", 5);
+        sad_size =  variables.getInt("sad_size", 5);
         happy_select = variables.getBoolean("happy_select",false);
         sad_select = variables.getBoolean("sad_select", false);
+        date_check = variables.getString("date_check", date_check);
 
 
         // Show the date
@@ -151,8 +153,8 @@ public class daily_screen extends Activity {
                     happy_count += 1;
                     total_count += 1;
                     happy_size += 1;
-                    if (happy_size >= 6) {
-                        happy_size = 6;
+                    if (happy_size >= 5) {
+                        happy_size = 5;
                     }
                     sad_size -= 1;
                     if (sad_size <= 1) {
@@ -165,8 +167,8 @@ public class daily_screen extends Activity {
                     sad_count += 1;
                     total_count += 1;
                     sad_size += 1;
-                    if (sad_size  >= 6) {
-                       sad_size = 6;
+                    if (sad_size  >= 5) {
+                       sad_size = 5;
                     }
                     happy_size -= 1;
                     if (happy_size <= 1) {
@@ -174,31 +176,39 @@ public class daily_screen extends Activity {
                     }
                 }
 
-                Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
 
-                textEditor = (EditText) findViewById(R.id.editText);
-                String text_entered = textEditor.getText().toString();
-                goToMonth.putExtra("text1", text_entered);
-
-                SharedPreferences.Editor edit = variables.edit();
-                edit.putInt("happies", happy_count);
-                edit.putInt("sads", sad_count);
-                edit.putInt("total", total_count);
-                edit.putString("input_text", text_entered);
-                edit.putInt("happy_size", happy_size);
-                edit.putInt("sad_size", sad_size);
-                edit.putBoolean("happy_select", happy_select);
-                edit.putBoolean("sad_select", sad_select);
-
-                edit.apply();
 
                 if (done_button.isSelected() && (image1.isSelected() || image2.isSelected())) {
+//                    &&
+//                    dateString == date_check
+                    Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
+
+                    textEditor = (EditText) findViewById(R.id.editText);
+                    String text_entered = textEditor.getText().toString();
+                    goToMonth.putExtra("text1", text_entered);
+
+                    SharedPreferences.Editor edit = variables.edit();
+                    edit.putInt("happies", happy_count);
+                    edit.putInt("sads", sad_count);
+                    edit.putInt("total", total_count);
+                    edit.putString("input_text", text_entered);
+                    edit.putInt("happy_size", happy_size);
+                    edit.putInt("sad_size", sad_size);
+                    edit.putBoolean("happy_select", happy_select);
+                    edit.putBoolean("sad_select", sad_select);
+                    edit.putString("date_check", date_check);
+
+                    edit.apply();
                     startActivity(goToMonth);
                 } else {
+                    CharSequence text;
+                    if (image1.isSelected() == false && image2.isSelected()==false ) {
+                         text = "Please select an emoji first!";
+                    } else {
+                         text = "You already made an entry for today!";
+                    }
                     Context context = getApplicationContext();
-                    CharSequence text = "Please select an emoji first!";
                     int duration = Toast.LENGTH_SHORT;
-
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 }

@@ -196,83 +196,34 @@ public class daily_screen extends Activity {
     }
 
     public void saveClicked(View v) {
-
         try {
-
-            OutputStreamWriter out=
-
-                    new OutputStreamWriter(openFileOutput(STORETEXT, 0));
-
+            OutputStreamWriter out = new OutputStreamWriter(openFileOutput(STORETEXT, 0));
             out.write(textEditor.getText().toString());
-
             out.close();
-
-            Toast
-
-                    .makeText(this, "The contents are saved in the file.", Toast.LENGTH_LONG)
-
-                    .show();
-
+        } catch (Throwable t) {
+            Toast.makeText(this, "Exception: " + t.toString(), Toast.LENGTH_LONG).show();
         }
-
-        catch (Throwable t) {
-
-            Toast
-
-                    .makeText(this, "Exception: "+t.toString(), Toast.LENGTH_LONG)
-
-                    .show();
-
-        }
-
     }
 
     public void readFileInEditor()
     {
-
         try {
-
             InputStream in = openFileInput(STORETEXT);
-
             if (in != null) {
-
-                InputStreamReader tmp=new InputStreamReader(in);
-
-                BufferedReader reader=new BufferedReader(tmp);
-
+                InputStreamReader tmp = new InputStreamReader(in);
+                BufferedReader reader = new BufferedReader(tmp);
                 String str;
-
-                StringBuilder buf=new StringBuilder();
-
+                StringBuilder buf = new StringBuilder();
                 while ((str = reader.readLine()) != null) {
-
-                    buf.append(str+"n");
-
+                    buf.append(str);
                 }
-
                 in.close();
-
                 textEditor.setText(buf.toString());
-
             }
-
+        } catch (java.io.FileNotFoundException e) {
+            // that's OK, we probably haven't created it yet
+        } catch (Throwable t) {
+            Toast.makeText(this, "Exception: " + t.toString(), Toast.LENGTH_LONG).show();
         }
-
-        catch (java.io.FileNotFoundException e) {
-
-        // that's OK, we probably haven't created it yet
-
-        }
-
-        catch (Throwable t) {
-
-            Toast
-
-                    .makeText(this, "Exception: " + t.toString(), Toast.LENGTH_LONG)
-
-                    .show();
-
-        }
-
     }
 }

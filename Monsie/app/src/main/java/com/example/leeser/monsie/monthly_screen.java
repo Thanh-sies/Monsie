@@ -6,31 +6,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.ArrayAdapter;
 
 import org.apache.commons.io.FileUtils;
-import org.w3c.dom.Text;
-
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.HashMap;
-
-
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Set;
 
 
 /**
@@ -54,7 +36,6 @@ public class monthly_screen extends Activity {
         monthlyBundle = savedInstanceState;
         setContentView(R.layout.monthly_screen);
 
-
         SharedPreferences variables = getSharedPreferences("variables", 0);
         text = variables.getString("input_text", text);
         happy_select = variables.getBoolean("happy_select", happy_select);
@@ -62,7 +43,6 @@ public class monthly_screen extends Activity {
         done_select = variables.getBoolean("done_select", done_select);
 
         readItems();
-
 
         lItems = (ListView) findViewById(R.id.listfeed);
         listAdapter = new custom_adapter(this, text_arr, img_arr);
@@ -75,6 +55,13 @@ public class monthly_screen extends Activity {
             edit.putBoolean("done_select", done_select);
             edit.apply();
         }
+
+        lItems.post(new Runnable() {
+            @Override
+            public void run() {
+                lItems.smoothScrollToPosition(listAdapter.getCount() - 1);
+            }
+        });
 
         // navigation buttons
         final Button day_button = (Button) findViewById(R.id.dayview);
@@ -91,7 +78,6 @@ public class monthly_screen extends Activity {
                 }
             }
         });
-
 
         year_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +100,13 @@ public class monthly_screen extends Activity {
             img_arr.add("Sad");
         }
         listAdapter.notifyDataSetChanged();
+
+        lItems.post(new Runnable() {
+            @Override
+            public void run() {
+                lItems.smoothScrollToPosition(listAdapter.getCount() - 1);
+            }
+        });
         writeItems();
     }
 

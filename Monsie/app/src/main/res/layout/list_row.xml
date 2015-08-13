@@ -7,7 +7,7 @@
     android:orientation="horizontal"
     android:padding="5dip" >
 
-    <!--  ListRow Left sied Thumbnail image -->
+    <!--  ListRow Left side Thumbnail image -->
     <LinearLayout android:id="@+id/thumbnail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,7 +24,6 @@
 
     </LinearLayout>
 
-    <!-- Title Of Song-->
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -36,7 +35,7 @@
         android:textSize="15dip"
         android:textStyle="bold"/>
 
-
+    <!-- Message -->
     <TextView
         android:id="@+id/input_text"
         android:layout_width="fill_parent"
@@ -46,6 +45,7 @@
         android:layout_toRightOf="@+id/thumbnail" />
     <!--android:layout_marginTop="1dip"-->
 
+    <!-- Date -->
     <TextView
         android:id="@+id/date"
         android:layout_width="wrap_content"

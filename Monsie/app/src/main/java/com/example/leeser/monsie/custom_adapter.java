@@ -1,6 +1,7 @@
 package com.example.leeser.monsie;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,9 @@ public class custom_adapter extends ArrayAdapter<String> {
         date_view.setText(date);
 
         txtTitle.setText(itemname.get(position));
+        // Change font
+        Typeface tf = Typeface.createFromAsset(context.getAssets(), "BEBAS.TTF");
+        txtTitle.setTypeface(tf);
         Integer src = -1;
         if (imgid.get(position).equals("Happy")) {
             src = R.mipmap.happy2;

@@ -14,6 +14,7 @@ import android.content.SharedPreferences;
 public class year_screen extends Activity {
     int happy_count;
     int sad_count;
+    int total_count;
     protected static Bundle yearBundle;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +62,8 @@ public class year_screen extends Activity {
         ViewGroup.LayoutParams happy_size = happy_view.getLayoutParams();
         happy_size.width = 105 * happy_count;
         happy_size.height = 105 * happy_count;
-
         happy_view.setLayoutParams(happy_size);
+        System.out.println(happy_count + " " + sad_count);
 
         ImageView sad_view = (ImageView) findViewById(R.id.imageView2);
         ViewGroup.LayoutParams sad_size = sad_view.getLayoutParams();

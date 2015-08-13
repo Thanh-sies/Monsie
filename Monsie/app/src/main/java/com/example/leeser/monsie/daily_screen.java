@@ -155,7 +155,7 @@ public class daily_screen extends Activity {
                     total_count += 1;
                     sad_size += 1;
                     if (sad_size  >= 5) {
-                       sad_size = 5;
+                        sad_size = 5;
                     }
                     happy_size -= 1;
                     if (happy_size <= 1) {

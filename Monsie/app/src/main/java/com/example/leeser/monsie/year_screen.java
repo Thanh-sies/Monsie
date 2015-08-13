@@ -18,9 +18,11 @@ import android.widget.FrameLayout.LayoutParams;
 public class year_screen extends Activity {
     int happy_count;
     int sad_count;
+    protected static Bundle yearBundle;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        yearBundle = savedInstanceState;
         setContentView(R.layout.year_screen);
 
 
@@ -33,7 +35,11 @@ public class year_screen extends Activity {
             @Override
             public void onClick(View v) {
                 Intent goToDay = new Intent(year_screen.this, daily_screen.class);
-                startActivity(goToDay);
+                if (daily_screen.dailyBundle==null) {
+                    startActivity(goToDay);
+                } else{
+                    onRestoreInstanceState(daily_screen.dailyBundle);
+                }
             }
         });
 
@@ -41,7 +47,11 @@ public class year_screen extends Activity {
             @Override
             public void onClick(View v) {
                 Intent goToMonth = new Intent(year_screen.this, monthly_screen.class);
-                startActivity(goToMonth);
+                if (monthly_screen.monthlyBundle == null){
+                    startActivity(goToMonth);
+                } else {
+                    onRestoreInstanceState(monthly_screen.monthlyBundle);
+                }
             }
         });
 
@@ -49,7 +59,11 @@ public class year_screen extends Activity {
             @Override
             public void onClick(View v) {
                 Intent goToYear = new Intent(year_screen.this, year_screen.class);
-                startActivity(goToYear);
+                if (yearBundle == null) {
+                    startActivity(goToYear);
+                } else {
+                    onRestoreInstanceState(yearBundle);
+                }
             }
         });
 

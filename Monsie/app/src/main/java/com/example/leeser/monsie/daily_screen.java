@@ -59,8 +59,11 @@ public class daily_screen extends Activity {
     protected final static String STORETEXT = "daily_logs.txt";
     private EditText textEditor;
 
+    protected static Bundle dailyBundle;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dailyBundle = savedInstanceState;
         setContentView(R.layout.daily_screen);
 
         variables = getSharedPreferences("variables", MODE_PRIVATE);
@@ -97,15 +100,23 @@ public class daily_screen extends Activity {
             @Override
             public void onClick(View v) {
                 Intent goToDay = new Intent(daily_screen.this, daily_screen.class);
-                startActivity(goToDay);
+                if (dailyBundle==null) {
+                    startActivity(goToDay);
+                } else{
+                    onRestoreInstanceState(dailyBundle);
+                }
             }
         });
 
         month_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent goToYear = new Intent(daily_screen.this, monthly_screen.class);
-                startActivity(goToYear);
+                Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
+                if (monthly_screen.monthlyBundle == null){
+                    startActivity(goToMonth);
+                } else {
+                    onRestoreInstanceState(monthly_screen.monthlyBundle);
+                }
             }
         });
 
@@ -113,7 +124,12 @@ public class daily_screen extends Activity {
             @Override
             public void onClick(View v) {
                 Intent goToYear = new Intent(daily_screen.this, year_screen.class);
-                startActivity(goToYear);
+                if (year_screen.yearBundle == null) {
+                    startActivity(goToYear);
+                } else {
+                    onRestoreInstanceState(year_screen.yearBundle);
+                }
+
             }
         });
 
@@ -259,6 +275,10 @@ public class daily_screen extends Activity {
         DateFormat dateFormat = new SimpleDateFormat("EEE, MMM d");
         Date date = new Date();
         return dateFormat.format(date);
+    }
+
+    public void onRestoreInstanceState(Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }
 

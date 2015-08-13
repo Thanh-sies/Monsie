@@ -45,9 +45,12 @@ public class monthly_screen extends Activity {
     boolean happy_select;
     boolean sad_select;
 
+    protected static Bundle monthlyBundle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        monthlyBundle = savedInstanceState;
         setContentView(R.layout.monthly_screen);
 
 
@@ -95,7 +98,11 @@ public class monthly_screen extends Activity {
             @Override
             public void onClick(View v) {
                 Intent goToDay = new Intent(monthly_screen.this, daily_screen.class);
-                startActivity(goToDay);
+                if (daily_screen.dailyBundle==null) {
+                    startActivity(goToDay);
+                } else{
+                    onRestoreInstanceState(daily_screen.dailyBundle);
+                }
             }
         });
 
@@ -103,7 +110,11 @@ public class monthly_screen extends Activity {
             @Override
             public void onClick(View v) {
                 Intent goToMonth = new Intent(monthly_screen.this, monthly_screen.class);
-                startActivity(goToMonth);
+                if (monthlyBundle == null){
+                    startActivity(goToMonth);
+                } else {
+                    onRestoreInstanceState(monthlyBundle);
+                }
             }
         });
 
@@ -111,7 +122,11 @@ public class monthly_screen extends Activity {
             @Override
             public void onClick(View v) {
                 Intent goToYear = new Intent(monthly_screen.this, year_screen.class);
-                startActivity(goToYear);
+                if (year_screen.yearBundle == null) {
+                    startActivity(goToYear);
+                } else {
+                    onRestoreInstanceState(year_screen.yearBundle);
+                }
             }
         });
     }

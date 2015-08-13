@@ -15,7 +15,8 @@
         android:layout_weight="0.01"
         android:paddingTop="10dp"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
 
         <Button
             android:id="@+id/dayview"

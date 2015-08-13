@@ -5,10 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Lisa Lee on 8/13/15.
@@ -18,10 +22,10 @@ public class custom_adapter extends ArrayAdapter<String> {
 
     private final Activity context;
     private final ArrayList<String> itemname;
-    private final ArrayList<Boolean> imgid;
+    private final ArrayList<String> imgid;
 
-    public custom_adapter(Activity context, ArrayList<String> itemname, ArrayList<Boolean> imgid) {
-        super(context, R.layout.monthly_row, itemname);
+    public custom_adapter(Activity context, ArrayList<String> itemname, ArrayList<String> imgid) {
+        super(context, R.layout.list_row, itemname);
         // TODO Auto-generated constructor stub
 
         this.context=context;
@@ -29,12 +33,29 @@ public class custom_adapter extends ArrayAdapter<String> {
         this.imgid=imgid;
     }
 
+//    public View getView(int position,View view,ViewGroup parent) {
+//        LayoutInflater inflater=context.getLayoutInflater();
+//        View rowView=inflater.inflate(R.layout.monthly_row, null,true);
+//
+//        TextView txtTitle = (TextView) rowView.findViewById(R.id.Itemname);
+//        ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
+//
+//        txtTitle.setText(itemname.get(position));
+//        imageView.setImageResource(imgid.get(position));
+//        return rowView;
+//    };
     public View getView(int position,View view,ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.monthly_row, null,true);
+        View rowView=inflater.inflate(R.layout.list_row, null, true);
 
-        TextView txtTitle = (TextView) rowView.findViewById(R.id.Itemname);
-        ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
+        TextView txtTitle = (TextView) rowView.findViewById(R.id.input_text);
+        ImageView imageView = (ImageView) rowView.findViewById(R.id.list_image);
+        TextView date_view = (TextView) rowView.findViewById(R.id.date);
+
+        DateFormat format = new SimpleDateFormat("MMM d");
+        Date d = new Date();
+        String date = format.format(d);
+        date_view.setText(date);
 
         txtTitle.setText(itemname.get(position));
         if (imgid.get(position)) {
@@ -44,4 +65,5 @@ public class custom_adapter extends ArrayAdapter<String> {
         }
         return rowView;
     };
+
 }

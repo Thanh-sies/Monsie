@@ -55,17 +55,6 @@ public class year_screen extends Activity {
             }
         });
 
-        year_button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent goToYear = new Intent(year_screen.this, year_screen.class);
-                if (yearBundle == null) {
-                    startActivity(goToYear);
-                } else {
-                    onRestoreInstanceState(yearBundle);
-                }
-            }
-        });
 
         //get the emoji counts from daily_screen to change size of the emojis
         SharedPreferences variables = getSharedPreferences("variables", 0);
@@ -116,7 +105,5 @@ public class year_screen extends Activity {
             }
         });
     }
-
-
 
 }

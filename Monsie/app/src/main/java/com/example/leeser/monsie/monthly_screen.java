@@ -28,7 +28,7 @@ import java.util.Set;
 public class monthly_screen extends Activity {
     String text;
     private ArrayList<String> text_arr = new ArrayList<>();
-    private ArrayList<String> img_arr = new ArrayList<>();
+    private ArrayList<Boolean> img_arr = new ArrayList<>();
     private custom_adapter listAdapter;
     private ListView lItems;
     boolean happy_select;
@@ -109,11 +109,7 @@ public class monthly_screen extends Activity {
 
     private void createNewEntry(boolean isHappy, String txt) {
         text_arr.add(txt);
-        if (isHappy) {
-            img_arr.add("Happy");
-        } else {
-            img_arr.add("Sad");
-        }
+        img_arr.add(isHappy);
         listAdapter.notifyDataSetChanged();
         writeItems();
     }
@@ -124,7 +120,7 @@ public class monthly_screen extends Activity {
         File imgFile = new File(filesDir, "img.txt");
         try {
             text_arr = new ArrayList<String>(FileUtils.readLines(msgFile));
-            img_arr = new ArrayList<String>(FileUtils.readLines(imgFile));
+            img_arr = new ArrayList<Boolean>(FileUtils.readLines(imgFile));
         } catch (IOException e) {
             text_arr = new ArrayList<String>();
         }

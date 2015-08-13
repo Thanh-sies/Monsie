@@ -14,7 +14,6 @@ import android.content.SharedPreferences;
 public class year_screen extends Activity {
     int happy_count;
     int sad_count;
-    int total_count;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,21 +51,34 @@ public class year_screen extends Activity {
 
         //get the emoji counts from daily_screen to change size of the emojis
         SharedPreferences variables = getSharedPreferences("variables", 0);
-        happy_count = variables.getInt("happies", 1);
-        sad_count = variables.getInt("sads", 1);
-        total_count = variables.getInt("total", 1);
+        happy_count = variables.getInt("happy_size", 1);
+        sad_count = variables.getInt("sad_size", 1);
+
+
 
         //Change size of the emojis
         ImageView happy_view = (ImageView) findViewById(R.id.imageView);
         ViewGroup.LayoutParams happy_size = happy_view.getLayoutParams();
         happy_size.width = 100 * happy_count;
         happy_size.height = 100 * happy_count;
+
+        if ((happy_count - sad_count) >= 5) {
+            happy_size.width = 450;
+            happy_size.height = 450;
+        }
+
         happy_view.setLayoutParams(happy_size);
 
         ImageView sad_view = (ImageView) findViewById(R.id.imageView2);
         ViewGroup.LayoutParams sad_size = sad_view.getLayoutParams();
+
         sad_size.width = 100 * sad_count;
         sad_size.height = 100 * sad_count;
+        if ((sad_count - happy_count) >= 5) {
+            sad_size.width = 450;
+            sad_size.height = 450;
+        }
+
         sad_view.setLayoutParams(sad_size);
 
 

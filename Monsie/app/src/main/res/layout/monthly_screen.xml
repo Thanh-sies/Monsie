@@ -3,7 +3,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ccffcc">
+    android:background="#ccffcc"
+    android:id="@+id/monthly">
+
+
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -31,7 +34,7 @@
             android:text="Monthly"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:background="#b7e5b7"/>
+            android:background="#92b792"/>
 
         <Button
             android:id="@+id/yearview"
@@ -42,24 +45,69 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:background="#b7e5b7"/>
+
     </RelativeLayout>
 
-
-    <Button
-        android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/done_button"
-        android:id="@+id/done_button"
-        android:layout_centerVertical="true"
+        android:id="@+id/textView"
+        android:layout_gravity="center_vertical"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_gravity="center_horizontal"
+        android:layout_above="@+id/done_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="112dp" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:text="New Text"
+        android:id="@+id/clickme"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:id="@+id/popup"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="invisible"
+        android:background="@drawable/border">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:background="#8c989d"
+            android:id="@+id/textView3"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="120dp"
+            android:padding="10dp"
+            android:text="@string/app_name"
+            android:id="@+id/message"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:id="@+id/ok_button"
+            android:layout_below="@+id/message"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 
 </RelativeLayout>

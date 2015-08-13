@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ccffcc">
+    android:background="#ccffcc"
+    >
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -40,7 +41,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:background="#b7e5b7"/>
+            android:background="#92b792"/>
     </RelativeLayout>
 
     <TextView
@@ -53,7 +54,8 @@
         android:gravity="center"
         android:typeface="sans"
         android:textColor="#395075"
-        android:id="@+id/yearlyReport" />
+        android:id="@+id/yearlyReport"
+       />
 
     <Button
         android:layout_width="180dp"
@@ -64,24 +66,48 @@
         android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="47dp" />
+        android:layout_marginBottom="47dp"
+        />
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/yearlyReport"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:id="@+id/relativeLayout">
+
+    </RelativeLayout>
 
     <ImageView
+        android:scaleType="fitStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:src="@mipmap/happy2"
-        android:layout_above="@+id/imageView2"
-        android:layout_centerHorizontal="true" />
+        android:layout_gravity="center"
+        android:maxHeight="200pt"
+        android:maxWidth="200pt"
+        android:paddingTop="10pt"
+        android:paddingBottom="10pt"
+        android:layout_alignTop="@+id/relativeLayout"
+        android:layout_alignLeft="@+id/summary_button"
+        android:layout_alignStart="@+id/summary_button" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView2"
         android:src="@mipmap/ic_launcher"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/imageView"
-        android:layout_toStartOf="@+id/imageView" />
-
+        android:layout_gravity="center_horizontal"
+        android:maxHeight="200pt"
+        android:maxWidth="200pt"
+        android:paddingTop="10pt"
+        android:paddingBottom="10pt"
+        android:scaleType="fitCenter"
+        android:layout_below="@+id/imageView"
+        android:layout_toRightOf="@+id/relativeLayout"
+        android:layout_toEndOf="@+id/relativeLayout" />
 
 </RelativeLayout>

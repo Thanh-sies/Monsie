@@ -163,6 +163,5 @@ public class monthly_screen extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

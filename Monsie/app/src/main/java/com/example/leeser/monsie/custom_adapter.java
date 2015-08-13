@@ -1,6 +1,8 @@
 package com.example.leeser.monsie;
 
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +37,7 @@ public class custom_adapter extends ArrayAdapter<String> {
         this.imgid=imgid;
     }
 
-//    public View getView(int position,View view,ViewGroup parent) {
+    //    public View getView(int position,View view,ViewGroup parent) {
 //        LayoutInflater inflater=context.getLayoutInflater();
 //        View rowView=inflater.inflate(R.layout.monthly_row, null,true);
 //
@@ -60,6 +62,9 @@ public class custom_adapter extends ArrayAdapter<String> {
         date_view.setText(date);
 
         txtTitle.setText(itemname.get(position));
+        // Change font
+        Typeface tf = Typeface.createFromAsset(context.getAssets(), "BEBAS.TTF");
+        txtTitle.setTypeface(tf);
         Integer src = -1;
         if (imgid.get(position).equals("Happy")) {
             src = R.mipmap.happy2;

@@ -55,7 +55,6 @@ public class year_screen extends Activity {
             }
         });
 
-
         //get the emoji counts from daily_screen to change size of the emojis
         SharedPreferences variables = getSharedPreferences("variables", 0);
         happy_count = variables.getInt("happy_size", 1);
@@ -66,25 +65,17 @@ public class year_screen extends Activity {
         //Change size of the emojis
         ImageView happy_view = (ImageView) findViewById(R.id.imageView);
         ViewGroup.LayoutParams happy_size = happy_view.getLayoutParams();
-        happy_size.width = 100 * happy_count;
-        happy_size.height = 100 * happy_count;
+        happy_size.width = 105 * happy_count;
+        happy_size.height = 105 * happy_count;
 
-//        if ((happy_count - sad_count) >= 5) {
-//            happy_size.width = 450;
-//            happy_size.height = 450;
-//        }
         happy_view.setLayoutParams(happy_size);
 
         ImageView sad_view = (ImageView) findViewById(R.id.imageView2);
         ViewGroup.LayoutParams sad_size = sad_view.getLayoutParams();
 
 
-        sad_size.width = 100 * sad_count;
-        sad_size.height = 100 * sad_count;
-        if (sad_count <= 1) {
-            RelativeLayout lp = new RelativeLayout(getApplicationContext());
-            lp.setGravity(Gravity.CENTER);
-        }
+        sad_size.width = 105 * sad_count;
+        sad_size.height = 105 * sad_count;
         sad_view.setLayoutParams(sad_size);
 
 
@@ -105,5 +96,4 @@ public class year_screen extends Activity {
             }
         });
     }
-
 }

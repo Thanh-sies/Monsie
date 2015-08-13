@@ -40,7 +40,7 @@ public class custom_adapter extends ArrayAdapter<String> {
         Integer src = -1;
         if (imgid.get(position).equals("Happy")) {
             src = R.mipmap.happy2;
-        } else if (imgid.get(position).equals("Sad")){
+        } else if (imgid.get(position).equals("Sad")) {
             src = R.mipmap.sad2;
         }
         imageView.setImageResource(src);

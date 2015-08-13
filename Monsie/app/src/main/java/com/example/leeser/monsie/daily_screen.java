@@ -34,7 +34,6 @@ import android.content.SharedPreferences;
 import java.io.FileOutputStream;
 import android.content.Context;
 
-
 /**
  * Created by Lisa Lee on 7/17/15.
  */
@@ -48,8 +47,6 @@ public class daily_screen extends Activity {
 //     variables = PreferenceManager.getDefaultSharedPreferences(this);
 ////     = variables.getInt("happies", 1);
 //    int sadSharedPreferences variables = getSharedPreferences("variables", 0);
-
-
 
     int happy_count;
     int sad_count;
@@ -213,8 +210,6 @@ public class daily_screen extends Activity {
         }
         return ret;
     }
-
-
 
     private void showDate() {
         // Show the date

@@ -25,11 +25,15 @@ public class monthly_screen extends Activity {
     String text;
     private ListView lst;
     private custom_adapter listAdapter;
+    private ArrayList<String> arr = new ArrayList<>();
+    private ArrayList<Integer> img = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.monthly_screen);
+
+        System.out.println("oncreate!");
 
         // get the text entered by user in daily_screen to show up on monthly screen
         //TextView entered_text = (TextView) findViewById(R.id.textView);
@@ -39,11 +43,11 @@ public class monthly_screen extends Activity {
         text = variables.getString("input_text", text);
         //entered_text.setText(text);
 
-        ArrayList<String> arr = new ArrayList<>();
-        ArrayList<Integer> img = new ArrayList<>();
-        arr.add(text);
-        img.add(R.mipmap.sad2);
-        createNewEntry(arr, img);
+        lst = (ListView) findViewById(R.id.listfeed);
+        listAdapter = new custom_adapter(this, arr, img);
+        lst.setAdapter(listAdapter);
+        boolean isHappy = true;
+        createNewEntry(isHappy, text);
 
 //        TextView clickText = (TextView) findViewById(R.id.Itemname);
 //        final RelativeLayout popup = (RelativeLayout) findViewById(R.id.popup);
@@ -94,9 +98,14 @@ public class monthly_screen extends Activity {
         });
     }
 
-    private void createNewEntry(ArrayList<String> arr, ArrayList<Integer> img) {
-        lst = (ListView) findViewById(R.id.listfeed);
-        listAdapter = new custom_adapter(this, arr, img);
-        lst.setAdapter(listAdapter);
+    private void createNewEntry(boolean isHappy, String txt) {
+        if (isHappy) {
+            img.add(R.mipmap.happy2);
+        } else {
+            img.add(R.mipmap.sad2);
+        }
+        arr.add(txt);
+        System.out.println(arr.size());
+        listAdapter.notifyDataSetChanged();
     }
 }

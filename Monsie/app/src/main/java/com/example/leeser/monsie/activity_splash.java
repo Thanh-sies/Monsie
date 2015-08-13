@@ -1,5 +1,6 @@
 package com.example.leeser.monsie;
 
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +21,7 @@ public class activity_splash extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
 
         new Handler().postDelayed(new Runnable() {
 

@@ -115,6 +115,7 @@
         android:layout_weight="0.23"
         android:maxLength="140"
         android:maxLines="5"
+        android:imeOptions="actionDone"
 
         />
 

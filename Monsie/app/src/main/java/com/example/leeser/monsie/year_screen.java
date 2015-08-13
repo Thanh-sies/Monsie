@@ -14,7 +14,6 @@ import android.content.SharedPreferences;
 public class year_screen extends Activity {
     int happy_count;
     int sad_count;
-    int total_count;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,16 +28,16 @@ public class year_screen extends Activity {
         day_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent goToMonth = new Intent(year_screen.this, daily_screen.class);
-                startActivity(goToMonth);
+                Intent goToDay = new Intent(year_screen.this, daily_screen.class);
+                startActivity(goToDay);
             }
         });
 
         month_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent goToYear = new Intent(year_screen.this, monthly_screen.class);
-                startActivity(goToYear);
+                Intent goToMonth = new Intent(year_screen.this, monthly_screen.class);
+                startActivity(goToMonth);
             }
         });
 
@@ -56,18 +55,30 @@ public class year_screen extends Activity {
         sad_count = variables.getInt("sad_size", 1);
 
 
+
         //Change size of the emojis
         ImageView happy_view = (ImageView) findViewById(R.id.imageView);
         ViewGroup.LayoutParams happy_size = happy_view.getLayoutParams();
         happy_size.width = 100 * happy_count;
         happy_size.height = 100 * happy_count;
 
+        if ((happy_count - sad_count) >= 5) {
+            happy_size.width = 450;
+            happy_size.height = 450;
+        }
+
         happy_view.setLayoutParams(happy_size);
 
         ImageView sad_view = (ImageView) findViewById(R.id.imageView2);
         ViewGroup.LayoutParams sad_size = sad_view.getLayoutParams();
+
         sad_size.width = 100 * sad_count;
         sad_size.height = 100 * sad_count;
+        if ((sad_count - happy_count) >= 5) {
+            sad_size.width = 450;
+            sad_size.height = 450;
+        }
+
         sad_view.setLayoutParams(sad_size);
 
 

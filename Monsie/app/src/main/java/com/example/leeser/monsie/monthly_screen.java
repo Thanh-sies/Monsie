@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Created by Lisa Lee on 7/24/15.
@@ -26,14 +27,14 @@ public class monthly_screen extends Activity {
     private ListView lst;
     private custom_adapter listAdapter;
     private ArrayList<String> arr = new ArrayList<>();
-    private ArrayList<Integer> img = new ArrayList<>();
+    private ArrayList<String> img = new ArrayList<>();
+    boolean happy_select;
+    boolean sad_select;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.monthly_screen);
-
-        System.out.println("oncreate!");
 
         // get the text entered by user in daily_screen to show up on monthly screen
         //TextView entered_text = (TextView) findViewById(R.id.textView);
@@ -41,15 +42,18 @@ public class monthly_screen extends Activity {
 
         SharedPreferences variables = getSharedPreferences("variables", 0);
         text = variables.getString("input_text", text);
+        happy_select = variables.getBoolean("happy_select", happy_select);
+        sad_select = variables.getBoolean("sad_select", sad_select);
         //entered_text.setText(text);
 
         lst = (ListView) findViewById(R.id.listfeed);
         listAdapter = new custom_adapter(this, arr, img);
         lst.setAdapter(listAdapter);
-        boolean isHappy = true;
+        boolean isHappy = happy_select;
         createNewEntry(isHappy, text);
 
 //        TextView clickText = (TextView) findViewById(R.id.Itemname);
+
 //        final RelativeLayout popup = (RelativeLayout) findViewById(R.id.popup);
 //        clickText.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -100,12 +104,11 @@ public class monthly_screen extends Activity {
 
     private void createNewEntry(boolean isHappy, String txt) {
         if (isHappy) {
-            img.add(R.mipmap.happy2);
+            img.add("Happy");
         } else {
-            img.add(R.mipmap.sad2);
+            img.add("Sad");
         }
         arr.add(txt);
-        System.out.println(arr.size());
         listAdapter.notifyDataSetChanged();
     }
 }

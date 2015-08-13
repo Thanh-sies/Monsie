@@ -18,9 +18,9 @@ public class custom_adapter extends ArrayAdapter<String> {
 
     private final Activity context;
     private final ArrayList<String> itemname;
-    private final ArrayList<Integer> imgid;
+    private final ArrayList<String> imgid;
 
-    public custom_adapter(Activity context, ArrayList<String> itemname, ArrayList<Integer> imgid) {
+    public custom_adapter(Activity context, ArrayList<String> itemname, ArrayList<String> imgid) {
         super(context, R.layout.monthly_row, itemname);
         // TODO Auto-generated constructor stub
 
@@ -37,7 +37,13 @@ public class custom_adapter extends ArrayAdapter<String> {
         ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 
         txtTitle.setText(itemname.get(position));
-        imageView.setImageResource(imgid.get(position));
+        Integer src = -1;
+        if (imgid.get(position).equals("Happy")) {
+            src = R.mipmap.happy2;
+        } else if (imgid.get(position).equals("Sad")){
+            src = R.mipmap.sad2;
+        }
+        imageView.setImageResource(src);
         return rowView;
     };
 }

@@ -81,7 +81,7 @@
     </RelativeLayout>
 
     <ImageView
-        android:scaleType="fitStart"
+        android:scaleType="fitCenter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
@@ -106,8 +106,7 @@
         android:paddingTop="10pt"
         android:paddingBottom="10pt"
         android:scaleType="fitCenter"
-        android:layout_below="@+id/imageView"
         android:layout_toRightOf="@+id/relativeLayout"
-        android:layout_toEndOf="@+id/relativeLayout" />
+        android:layout_below="@+id/imageView" />
 
 </RelativeLayout>

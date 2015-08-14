@@ -65,16 +65,15 @@ public class year_screen extends Activity {
         //Change size of the emojis
         ImageView happy_view = (ImageView) findViewById(R.id.imageView);
         ViewGroup.LayoutParams happy_size = happy_view.getLayoutParams();
-        happy_size.width = 150 * happy_count;
-        happy_size.height = 150 * happy_count;
+        happy_size.width = 200 * happy_count;
+        happy_size.height = 200 * happy_count;
         happy_view.setLayoutParams(happy_size);
-        System.out.println(happy_count + " " + sad_count);
 
         ImageView sad_view = (ImageView) findViewById(R.id.imageView2);
         ViewGroup.LayoutParams sad_size = sad_view.getLayoutParams();
 
-        sad_size.width = 150 * sad_count;
-        sad_size.height = 150 * sad_count;
+        sad_size.width = 200 * sad_count;
+        sad_size.height = 200 * sad_count;
         sad_view.setLayoutParams(sad_size);
 
         // Show the date

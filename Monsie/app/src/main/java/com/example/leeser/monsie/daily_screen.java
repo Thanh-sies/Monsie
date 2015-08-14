@@ -148,13 +148,12 @@ public class daily_screen extends Activity {
                     if (happy_size >= 3) {
                         happy_size = 3;
                     }
-                    //sad_size -= 1;
+                    sad_size -= 1;
                     if (sad_size < 0) {
                         sad_size = 1;
                     };
 
                 } else if (done_button.isSelected() && image2.isSelected()) {
-//                    done_button.setSelected(true);
                     happy_select = false;
                     sad_select = true;
                     sad_count += 1;
@@ -163,7 +162,7 @@ public class daily_screen extends Activity {
                     if (sad_size  >= 3) {
                         sad_size = 3;
                     }
-                    //happy_size -= 1;
+                    happy_size -= 1;
                     if (happy_size < 0) {
                         happy_size = 1;
                     }
@@ -174,10 +173,8 @@ public class daily_screen extends Activity {
                 done_select = done_button.isSelected();
                 SharedPreferences.Editor edit = variables.edit();
 
-
-                if (done_button.isSelected() && (image1.isSelected() || image2.isSelected())) {
-//                    &&
-//                    dateString == date_check
+                if (done_button.isSelected() && (image1.isSelected() || image2.isSelected()) &&
+                    !dateString.equals(date_check)) {
 
                     Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
 
@@ -196,7 +193,6 @@ public class daily_screen extends Activity {
                     edit.putBoolean("sad_select", sad_select);
                     edit.putString("date_check", date_check);
                     edit.putBoolean("done_select", done_select);
-
 
                     edit.apply();
                     startActivity(goToMonth);
@@ -218,35 +214,6 @@ public class daily_screen extends Activity {
             }
         });
     }
-
-//    @Override
-//    public boolean dispatchTouchEvent(MotionEvent event) {
-//
-//        View v = getCurrentFocus();
-//        boolean ret = super.dispatchTouchEvent(event);
-//
-//        if (v instanceof EditText) {
-//            View w = getCurrentFocus();
-//            int scrcoords[] = new int[2];
-//            w.getLocationOnScreen(scrcoords);
-//            float x = event.getRawX() + w.getLeft() - scrcoords[0];
-//            float y = event.getRawY() + w.getTop() - scrcoords[1];
-//
-//            Log.d("Activity", "Touch event " + event.getRawX() + ","
-//                    + event.getRawY() + " " + x + "," + y + " rect "
-//                    + w.getLeft() + "," + w.getTop() + "," + w.getRight()
-//                    + "," + w.getBottom() + " coords " + scrcoords[0] + ","
-//                    + scrcoords[1]);
-//            if (event.getAction() == MotionEvent.ACTION_UP && (x < w.getLeft() || x >= w.getRight()
-//                    || y < w.getTop() || y > w.getBottom()) ) {
-//
-//                InputMethodManager imm =
-//                        (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-//                imm.hideSoftInputFromWindow(getWindow().getCurrentFocus().getWindowToken(), 0);
-//            }
-//        }
-//        return ret;
-//    }
 
     private void showDate() {
         // Show the date

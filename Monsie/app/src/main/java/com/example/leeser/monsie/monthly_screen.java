@@ -10,9 +10,13 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import org.apache.commons.io.FileUtils;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 
 
 /**
@@ -27,6 +31,7 @@ public class monthly_screen extends Activity {
     boolean happy_select;
     boolean sad_select;
     boolean done_select;
+    String date_check;
 
     protected static Bundle monthlyBundle;
 
@@ -41,6 +46,7 @@ public class monthly_screen extends Activity {
         happy_select = variables.getBoolean("happy_select", happy_select);
         sad_select = variables.getBoolean("sad_select", sad_select);
         done_select = variables.getBoolean("done_select", done_select);
+        date_check = variables.getString("date_check", date_check);
 
         readItems();
 
@@ -48,11 +54,13 @@ public class monthly_screen extends Activity {
         listAdapter = new custom_adapter(this, text_arr, img_arr);
         lItems.setAdapter(listAdapter);
         boolean isHappy = happy_select;
+        date_check = printDate();
         if (done_select) {
             createNewEntry(isHappy, text);
             done_select = false;
             SharedPreferences.Editor edit = variables.edit();
             edit.putBoolean("done_select", done_select);
+            edit.putString("date_check", date_check);
             edit.apply();
         }
 
@@ -132,5 +140,11 @@ public class monthly_screen extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private String printDate() {
+        DateFormat dateFormat = new SimpleDateFormat("EEE, MMM d");
+        Date date = new Date();
+        return dateFormat.format(date);
     }
 }

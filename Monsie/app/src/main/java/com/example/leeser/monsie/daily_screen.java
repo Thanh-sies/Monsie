@@ -3,6 +3,8 @@ package com.example.leeser.monsie;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -71,6 +73,11 @@ public class daily_screen extends Activity {
         // Change font
         Typeface tf = Typeface.createFromAsset(getAssets(), "BEBAS.TTF");
         dateView.setTypeface(tf);
+
+        //limit to max 140 chararacters.
+        EditText inputs = (EditText) findViewById(R.id.editText);
+        inputs.setFilters(new InputFilter[] {new InputFilter.LengthFilter(100)});
+
 
 
         // emoji buttons

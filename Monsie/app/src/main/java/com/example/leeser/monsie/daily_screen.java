@@ -57,8 +57,8 @@ public class daily_screen extends Activity {
         happy_count = variables.getInt("happies", 0);
         sad_count = variables.getInt("sads", 0);
         total_count = variables.getInt("total", 0);
-        happy_size =  variables.getInt("happy_size", 5);
-        sad_size =  variables.getInt("sad_size", 5);
+        happy_size =  variables.getInt("happy_size", 0);
+        sad_size =  variables.getInt("sad_size", 0);
         happy_select = variables.getBoolean("happy_select",false);
         sad_select = variables.getBoolean("sad_select", false);
         date_check = variables.getString("date_check", date_check);
@@ -145,11 +145,11 @@ public class daily_screen extends Activity {
                     happy_count += 1;
                     total_count += 1;
                     happy_size += 1;
-                    if (happy_size >= 5) {
-                        happy_size = 5;
+                    if (happy_size >= 3) {
+                        happy_size = 3;
                     }
-                    sad_size -= 1;
-                    if (sad_size <= 1) {
+                    //sad_size -= 1;
+                    if (sad_size < 0) {
                         sad_size = 1;
                     };
 
@@ -160,11 +160,11 @@ public class daily_screen extends Activity {
                     sad_count += 1;
                     total_count += 1;
                     sad_size += 1;
-                    if (sad_size  >= 5) {
-                        sad_size = 5;
+                    if (sad_size  >= 3) {
+                        sad_size = 3;
                     }
-                    happy_size -= 1;
-                    if (happy_size <= 1) {
+                    //happy_size -= 1;
+                    if (happy_size < 0) {
                         happy_size = 1;
                     }
                 } else {
@@ -219,34 +219,34 @@ public class daily_screen extends Activity {
         });
     }
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-
-        View v = getCurrentFocus();
-        boolean ret = super.dispatchTouchEvent(event);
-
-        if (v instanceof EditText) {
-            View w = getCurrentFocus();
-            int scrcoords[] = new int[2];
-            w.getLocationOnScreen(scrcoords);
-            float x = event.getRawX() + w.getLeft() - scrcoords[0];
-            float y = event.getRawY() + w.getTop() - scrcoords[1];
-
-            Log.d("Activity", "Touch event " + event.getRawX() + ","
-                    + event.getRawY() + " " + x + "," + y + " rect "
-                    + w.getLeft() + "," + w.getTop() + "," + w.getRight()
-                    + "," + w.getBottom() + " coords " + scrcoords[0] + ","
-                    + scrcoords[1]);
-            if (event.getAction() == MotionEvent.ACTION_UP && (x < w.getLeft() || x >= w.getRight()
-                    || y < w.getTop() || y > w.getBottom()) ) {
-
-                InputMethodManager imm =
-                        (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(getWindow().getCurrentFocus().getWindowToken(), 0);
-            }
-        }
-        return ret;
-    }
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent event) {
+//
+//        View v = getCurrentFocus();
+//        boolean ret = super.dispatchTouchEvent(event);
+//
+//        if (v instanceof EditText) {
+//            View w = getCurrentFocus();
+//            int scrcoords[] = new int[2];
+//            w.getLocationOnScreen(scrcoords);
+//            float x = event.getRawX() + w.getLeft() - scrcoords[0];
+//            float y = event.getRawY() + w.getTop() - scrcoords[1];
+//
+//            Log.d("Activity", "Touch event " + event.getRawX() + ","
+//                    + event.getRawY() + " " + x + "," + y + " rect "
+//                    + w.getLeft() + "," + w.getTop() + "," + w.getRight()
+//                    + "," + w.getBottom() + " coords " + scrcoords[0] + ","
+//                    + scrcoords[1]);
+//            if (event.getAction() == MotionEvent.ACTION_UP && (x < w.getLeft() || x >= w.getRight()
+//                    || y < w.getTop() || y > w.getBottom()) ) {
+//
+//                InputMethodManager imm =
+//                        (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+//                imm.hideSoftInputFromWindow(getWindow().getCurrentFocus().getWindowToken(), 0);
+//            }
+//        }
+//        return ret;
+//    }
 
     private void showDate() {
         // Show the date

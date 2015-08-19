@@ -1,6 +1,7 @@
 package com.example.leeser.monsie;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,8 +24,11 @@ public class custom_adapter extends ArrayAdapter<String> {
     private final Activity context;
     private final ArrayList<String> itemname;
     private final ArrayList<String> imgid;
+    private final ArrayList<String> date_arr;
+    String date_check;
 
-    public custom_adapter(Activity context, ArrayList<String> itemname, ArrayList<String> imgid) {
+    public custom_adapter(Activity context, ArrayList<String> itemname, ArrayList<String> imgid,
+                          ArrayList<String> date_arr) {
         super(context, R.layout.list_row, itemname);
 
         // TODO Auto-generated constructor stub
@@ -32,6 +36,7 @@ public class custom_adapter extends ArrayAdapter<String> {
         this.context=context;
         this.itemname=itemname;
         this.imgid=imgid;
+        this.date_arr = date_arr;
     }
 
     public View getView(int position,View view,ViewGroup parent) {
@@ -42,15 +47,20 @@ public class custom_adapter extends ArrayAdapter<String> {
         ImageView imageView = (ImageView) rowView.findViewById(R.id.list_image);
         TextView date_view = (TextView) rowView.findViewById(R.id.date);
 
-        DateFormat format = new SimpleDateFormat("MMM d");
-        Date d = new Date();
-        String date = format.format(d);
-        date_view.setText(date);
+//        DateFormat format = new SimpleDateFormat("MMM d");
+//        Date d = new Date();
+//        String date = format.format(d);
+//        date_view.setText(date);
+
+        SharedPreferences variables = context.getSharedPreferences("variables", 0);
+        date_check = variables.getString("date_check", date_check);
+        date_view.setText(date_arr.get(position));
 
         txtTitle.setText(itemname.get(position));
         // Change font
         Typeface tf = Typeface.createFromAsset(context.getAssets(), "BEBAS.TTF");
         txtTitle.setTypeface(tf);
+        date_view.setTypeface(tf);
         Integer src = -1;
         if (imgid.get(position).equals("Happy")) {
             src = R.mipmap.happy2;

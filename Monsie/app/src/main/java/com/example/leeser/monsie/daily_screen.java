@@ -174,7 +174,7 @@ public class daily_screen extends Activity {
                 SharedPreferences.Editor edit = variables.edit();
 
                 if (done_button.isSelected() && (image1.isSelected() || image2.isSelected()) &&
-                    !dateString.equals(date_check)) {
+                        !dateString.equals(date_check)) {
 
                     Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
 

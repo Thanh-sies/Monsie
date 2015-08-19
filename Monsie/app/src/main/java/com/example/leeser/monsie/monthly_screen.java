@@ -26,6 +26,7 @@ public class monthly_screen extends Activity {
     String text;
     private ArrayList<String> text_arr = new ArrayList<>();
     private ArrayList<String> img_arr = new ArrayList<>();
+    private ArrayList<String> date_arr = new ArrayList<>();
     private custom_adapter listAdapter;
     private ListView lItems;
     boolean happy_select;
@@ -51,12 +52,12 @@ public class monthly_screen extends Activity {
         readItems();
 
         lItems = (ListView) findViewById(R.id.listfeed);
-        listAdapter = new custom_adapter(this, text_arr, img_arr);
+        listAdapter = new custom_adapter(this, text_arr, img_arr, date_arr);
         lItems.setAdapter(listAdapter);
         boolean isHappy = happy_select;
         date_check = printDate();
         if (done_select) {
-            createNewEntry(isHappy, text);
+            createNewEntry(isHappy, text, date_check);
             done_select = false;
             SharedPreferences.Editor edit = variables.edit();
             edit.putBoolean("done_select", done_select);
@@ -100,8 +101,9 @@ public class monthly_screen extends Activity {
         });
     }
 
-    private void createNewEntry(boolean isHappy, String txt) {
+    private void createNewEntry(boolean isHappy, String txt, String date) {
         text_arr.add(txt);
+        date_arr.add(date);
         if (isHappy) {
             img_arr.add("Happy");
         } else {
@@ -122,9 +124,11 @@ public class monthly_screen extends Activity {
         File filesDir = getFilesDir();
         File msgFile = new File(filesDir, "msg.txt");
         File imgFile = new File(filesDir, "img.txt");
+        File dateFile = new File(filesDir, "date.txt");
         try {
             text_arr = new ArrayList<String>(FileUtils.readLines(msgFile));
             img_arr = new ArrayList<String>(FileUtils.readLines(imgFile));
+            date_arr = new ArrayList<String>(FileUtils.readLines(dateFile));
         } catch (IOException e) {
             text_arr = new ArrayList<String>();
         }
@@ -134,9 +138,11 @@ public class monthly_screen extends Activity {
         File filesDir = getFilesDir();
         File msgFile = new File(filesDir, "msg.txt");
         File imgFile = new File(filesDir, "img.txt");
+        File dateFile = new File(filesDir, "date.txt");
         try {
             FileUtils.writeLines(msgFile, text_arr);
             FileUtils.writeLines(imgFile, img_arr);
+            FileUtils.writeLines(dateFile, date_arr);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -42,7 +42,10 @@
         android:layout_height="wrap_content"
         android:textColor="#343434"
         android:textSize="14dip"
-        android:layout_toRightOf="@+id/thumbnail" />
+        android:layout_toRightOf="@+id/thumbnail"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/date"
+        android:layout_toStartOf="@+id/date" />
     <!--android:layout_marginTop="1dip"-->
 
     <!-- Date -->

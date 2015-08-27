@@ -93,6 +93,7 @@ public class daily_screen extends Activity {
                 Intent goToMonth = new Intent(daily_screen.this, monthly_screen.class);
                 if (monthly_screen.monthlyBundle == null) {
                     startActivity(goToMonth);
+                    finish();
                 } else {
                     onRestoreInstanceState(monthly_screen.monthlyBundle);
                 }
@@ -105,6 +106,7 @@ public class daily_screen extends Activity {
                 Intent goToYear = new Intent(daily_screen.this, year_screen.class);
                 if (year_screen.yearBundle == null) {
                     startActivity(goToYear);
+                    finish();
                 } else {
                     onRestoreInstanceState(year_screen.yearBundle);
                 }
@@ -196,6 +198,7 @@ public class daily_screen extends Activity {
 
                     edit.apply();
                     startActivity(goToMonth);
+                    finish();
                 } else {
                     CharSequence text;
                     done_select = false;

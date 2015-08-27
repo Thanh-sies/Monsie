@@ -82,6 +82,7 @@ public class monthly_screen extends Activity {
                 Intent goToDay = new Intent(monthly_screen.this, daily_screen.class);
                 if (daily_screen.dailyBundle==null) {
                     startActivity(goToDay);
+                    finish();
                 } else{
                     onRestoreInstanceState(daily_screen.dailyBundle);
                 }
@@ -94,6 +95,7 @@ public class monthly_screen extends Activity {
                 Intent goToYear = new Intent(monthly_screen.this, year_screen.class);
                 if (year_screen.yearBundle == null) {
                     startActivity(goToYear);
+                    finish();
                 } else {
                     onRestoreInstanceState(year_screen.yearBundle);
                 }

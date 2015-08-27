@@ -46,6 +46,7 @@ public class year_summary extends Activity {
             public void onClick(View v) {
                 Intent goToYear = new Intent(year_summary.this, year_screen.class);
                 startActivity(goToYear);
+                finish();
             }
         });
 
